@@ -1,0 +1,144 @@
+
+{% extends "base_cli.html" %}
+{% load static %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Bookings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f1f1;
+    }
+
+    .user-booking-section {
+      padding: 20px;
+      max-width: 95%;
+      margin: auto;
+      background: #fff;
+      overflow-x: auto;
+    }
+
+    .user-booking-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    th {
+      background-color: #a8a5a5ff;
+      font-weight: bold;
+    }
+
+    /* Scroll table horizontally on small devices */
+    .table-container {
+      overflow-x: auto;
+    }
+
+    /* Responsive typography and padding */
+    @media (max-width: 2048px) {
+      table { font-size: 16px; }
+    }
+
+    @media (max-width: 1800px) {
+      table { font-size: 15px; }
+    }
+
+    @media (max-width: 1024px) {
+      table { font-size: 14px; }
+    }
+
+    @media (max-width: 800px) {
+      table { font-size: 13px; }
+    }
+
+    @media (max-width: 650px) {
+      table { font-size: 12px; }
+    }
+
+    @media (max-width: 450px) {
+      table { font-size: 11px; }
+    }
+
+    @media (max-width: 300px) {
+      table { font-size: 10px; }
+      th, td {
+        padding: 6px;
+      }
+    }
+
+    /* Optional: make table horizontally scrollable on narrow screens */
+    @media (max-width: 768px) {
+      .user-booking-section {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="user-booking-section">
+    <h2>User Booking History</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Booking No.</th>
+            <th>Name</th>
+            <th>Vehicle</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Pickup</th>
+            <th>Dropoff</th>
+            <th>Driver</th>
+            <th>Price</th>
+            <th>Book Status</th>
+            <th>Created</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for booking in bookings %}
+          <tr>
+            <td>{{ booking.booking_number }}</td>
+            <td>{{ booking.user.first_name }} {{ booking.user.last_name }}</td>
+            <td>{{ booking.vehicle }}</td>
+            <td>{{ booking.start_date }} {{ booking.start_time }}</td>
+            <td>{{ booking.end_date }} {{ booking.end_time }}</td>
+            <td>{{ booking.pickup_location_id }}</td>
+            <td>{{ booking.dropoff_location_id }}</td>
+            <td>{{ booking.driver_choice }}</td>
+            <td>₹{{ booking.total_price }}</td>
+            <td>{{ booking.booking_status }}</td>
+            <td>{{ booking.created_at|date:"Y-m-d H:i" }}</td>
+            
+          </tr>
+          {% empty %}
+          <tr><td colspan="12">No bookings found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</body>
+</html>
+{% endblock %}

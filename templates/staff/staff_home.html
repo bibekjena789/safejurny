@@ -1,0 +1,228 @@
+{% extends "base_staff.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+
+
+
+
+
+<!-- -------------------------------- home  -->
+<div id="home" class="main_admin_section_HOME ">
+  <div class="main_admin_section_vehicle">
+    <h1>Bike List</h1>
+    <div class="main_admin_section_vehicle_table-container">
+      <table >
+        <thead>
+          <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>License Plate</th>
+            <th>Vehicle image</th>
+            <th>Location</th>
+            <th>Hourly rate wo driver</th>
+            <th>Hourly rate with driver</th>
+            <th>Daily rate wo driver</th>
+            <th>Daily rate with driver</th>
+            <th>Weekly rate wo driver</th>
+            <th>Weekly rate with driver</th>
+            <th>Fif day rate wo driver</th>
+            <th>Fif day rate with driver</th>
+            <th>Monthly rate wo driver</th>
+            <th>Monthly rate with driver</th>
+            <th>Status</th>
+            <th>Allot City</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for bkd in bike_list %}
+          <tr>
+            <td>{{ bkd.make}}</td>
+            <td>{{bkd.model}}</td>
+            <td>{{bkd.year}}</td>
+            <td>{{bkd.license_plate}}</td>
+            <td><img src={{bkd.vehicle_image.url}} alt="{{bkd.model}}" width="100"></td>
+            <td>{{bkd.location}}</td>
+
+            <td>{{bkd.hourly_rate_wo_driver}}</td>
+            <td>{{bkd.hourly_rate_with_driver}}</td>
+            <td>{{bkd.daily_rate_wo_driver}}</td>
+            <td>{{bkd.daily_rate_with_driver}}</td>
+            <td>{{bkd.weekly_rate_wo_driver }}</td>
+            <td>{{bkd.weekly_rate_with_driver}}</td>
+            <td>{{bkd.fif_day_rate_wo_driver}}</td>
+            <td>{{bkd.fif_day_rate_with_driver}}</td>
+            <td>{{bkd.monthly_rate_wo_driver}}</td>
+            <td>{{bkd.monthly_rate_with_driver}}</td>
+            <td>{{bkd.status}}</td>
+            <td>{{bkd.allot_city}}</td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+  <div class="main_admin_section_vehicle">
+    <h1>Car List</h1>
+    <div class="main_admin_section_vehicle_table-container ">
+      <table id="ridesTable">
+        <thead>
+          <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>License Plate</th>
+            <th>Vehicle image</th>
+            <th>Location</th>
+            <th>Hourly rate wo driver</th>
+            <th>Hourly rate with driver</th>
+            <th>Daily rate wo driver</th>
+            <th>Daily rate with driver</th>
+            <th>Weekly rate wo driver</th>
+            <th>Weekly rate with driver</th>
+            <th>Fif day rate wo driver</th>
+            <th>Fif day rate with driver</th>
+            <th>Monthly rate wo driver</th>
+            <th>Monthly rate with driver</th>
+            <th>Status</th>
+            <th>Allot City</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for crd in car_list %}
+          <tr>
+             <td>{{ crd.make}}</td>
+            <td>{{crd.model}}</td>
+            <td>{{crd.year}}</td>
+            <td>{{crd.license_plate}}</td>
+            <td><img src={{crd.vehicle_image.url}} alt="{{crd.model}}" width="100"></td>
+            <td>{{crd.location}}</td>
+
+            <td>{{crd.hourly_rate_wo_driver}}</td>
+            <td>{{crd.hourly_rate_with_driver}}</td>
+            <td>{{crd.daily_rate_wo_driver}}</td>
+            <td>{{crd.daily_rate_with_driver}}</td>
+            <td>{{crd.weekly_rate_wo_driver }}</td>
+            <td>{{crd.weekly_rate_with_driver}}</td>
+            <td>{{crd.fif_day_rate_wo_driver}}</td>
+            <td>{{crd.fif_day_rate_with_driver}}</td>
+            <td>{{crd.monthly_rate_wo_driver}}</td>
+            <td>{{crd.monthly_rate_with_driver}}</td>
+            <td>{{crd.status}}</td>
+            <td>{{crd.allot_city}}</td>
+          </tr>
+          {% endfor %}
+         
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="main_admin_section_vehicle">
+    <h1>Scooty List</h1>
+    <div class="main_admin_section_vehicle_table-container">
+      <table id="myTable">
+        <thead>
+          <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>License Plate</th>
+            <th>Vehicle image</th>
+            <th>Location</th>
+            <th>Hourly rate wo driver</th>
+            <th>Hourly rate with driver</th>
+            <th>Daily rate wo driver</th>
+            <th>Daily rate with driver</th>
+            <th>Weekly rate wo driver</th>
+            <th>Weekly rate with driver</th>
+            <th>Fif day rate wo driver</th>
+            <th>Fif day rate with driver</th>
+            <th>Monthly rate wo driver</th>
+            <th>Monthly rate with driver</th>
+            <th>Status</th>
+            <th>Allot City</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for sty in scooty_list %}
+          <tr>
+            <td>{{sty.make}}</td>
+            <td>{{sty.model}}</td>
+            <td>{{sty.year}}</td>
+            <td>{{sty.license_plate}}</td>
+            <td><img src={{sty.vehicle_image.url}} alt={{sty.model}} width="100"></td>
+            <td>{{crd.location}}</td>
+
+            <td>{{sty.hourly_rate_wo_driver}}</td>
+            <td>{{sty.hourly_rate_with_driver}}</td>
+            <td>{{sty.daily_rate_wo_driver}}</td>
+            <td>{{sty.daily_rate_with_driver}}</td>
+            <td>{{sty.weekly_rate_wo_driver }}</td>
+            <td>{{sty.weekly_rate_with_driver}}</td>
+            <td>{{sty.fif_day_rate_wo_driver}}</td>
+            <td>{{sty.fif_day_rate_with_driver}}</td>
+            <td>{{sty.monthly_rate_wo_driver}}</td>
+            <td>{{sty.monthly_rate_with_driver}}</td>
+            <td>{{sty.status}}</td>
+            <td>{{sty.allot_city}}</td>
+          </tr>
+          {% endfor %}
+          
+         
+        </tbody>
+      </table>
+     <div class="pagination">
+  <button onclick="prevPage()">Prev</button>
+  <button onclick="nextPage()">Next</button>
+</div>
+
+    </div>
+     
+  </div>
+
+
+
+</div>
+
+<script>
+  const rowsPerPage = 3;
+  let currentPage = 1;
+
+  function showPage(page) {
+    const table = document.getElementById("myTable");
+    const rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+
+    const totalRows = rows.length;
+    const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+    if (page < 1) page = 1;
+    if (page > totalPages) page = totalPages;
+
+    for (let i = 0; i < totalRows; i++) {
+      rows[i].style.display = (i >= (page - 1) * rowsPerPage && i < page * rowsPerPage) ? "" : "none";
+    }
+
+    currentPage = page;
+  }
+
+  function nextPage() {
+    showPage(currentPage + 1);
+  }
+
+  function prevPage() {
+    showPage(currentPage - 1);
+  }
+
+  // Initial page load
+  showPage(1);
+</script>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+
+    .vehicles {
+      height: fit-content;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .vehicle-card {
+      height: fit-content;
+      background: white;
+      padding: 15px;
+      border-radius: 5px;
+      width: 300px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .vehicle-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+   
+    #form {
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 500px;
+      margin: auto;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    /* Responsive styles */
+@media (max-width: 768px) {
+  .vehicles {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .vehicle-card {
+    width: 90%;
+  }
+  
+  form {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .vehicle-card {
+    width: 100%;
+    padding: 10px;
+  }
+
+  input, select {
+    padding: 8px;
+    font-size: 1em;
+  }
+}

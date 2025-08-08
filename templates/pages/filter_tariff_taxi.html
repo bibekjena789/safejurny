@@ -1,0 +1,560 @@
+{% extends "base_cli.html" %}
+{% block title %}Tariff{% endblock %}
+{% block content %}
+
+<!-- <h1>test taxi .html</h1>
+<div class="test_div">css test</div>
+<script>
+    alert("js test taxi .html");
+</script> -->
+
+<header class="car-head">
+    <h1>Car rentals</h1>
+    <p>Home / Car rentals</p>
+</header>
+
+ <!-- left section start -->
+
+<main class="container_taxi">
+  <div class="main_container">
+    <div class="main_content">
+
+    <section class="left">
+       <!-- <div class="slider"> -->
+          <!-- <div class="carousel-container"> -->
+                <!-- <button class="carousel-button prev-button">&#10094;</button> -->
+  
+                <!-- <div class="carousel-sliderr"> -->
+                <!-- <img src="static/images/background_all/img_back_2.jpeg" class="carousel-image active" alt="Car 1"> -->
+                <!-- <img src="static/images/background_all/img_back_2.jpeg" class="carousel-image" alt="Car 2">
+                 <img src="static/images/background_all/img_back_2.jpeg" class="carousel-image" alt="Car 3"> -->
+                <!-- </div> -->
+  
+                 <!-- <button class="carousel-button next-button">&#10095;</button> -->
+          <!-- </div> -->
+        <!-- </div>    -->
+
+        <div class="image-carousel-container">
+  <button class="carousel-prev">&#10094;</button>
+
+  <div class="carousel-wrapper2" id="car-id">
+    <img src="/static/images/default/profileicon.jpg" class="carousel-image2 active" alt="Car 1" >
+    <img src="/static/images/background_all/home_head_back_1.jpg" class="carousel-image2" alt="Car 2">
+    <img src="/static/images/" class="carousel-image2" alt="Car 3">
+    <img src="" class="carousel-image2" alt="Car 4">
+  </div>
+
+  <button class="carousel-next">&#10095;</button>
+</div>
+
+  
+        
+ <!-- image slide -->
+  <!-- <script>
+  const carouselImages = document.querySelectorAll('.carousel-image2');
+  let carouselIndex = 0;
+
+  function showImage(index) {
+    carouselImages.forEach((img, i) => {
+      img.classList.remove('active');
+      if (i === index) {
+        img.classList.add('active');
+      }
+    });
+  }
+
+  function nextImage() {
+    carouselIndex = (carouselIndex + 1) % carouselImages.length;
+    showImage(carouselIndex);
+  }
+
+  function prevImage() {
+    carouselIndex = (carouselIndex - 1 + carouselImages.length) % carouselImages.length;
+    showImage(carouselIndex);
+  }
+
+  // Button event listeners
+  document.querySelector('.carousel-next').addEventListener('click', nextImage);
+  document.querySelector('.carousel-prev').addEventListener('click', prevImage);
+
+  // Auto-scroll every 2 seconds
+  setInterval(nextImage, 2000);
+
+  // Show first image on page load
+  showImage(carouselIndex);
+</script> -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const carSlides = document.querySelectorAll('.carousel-image2');
+    let currentSlideIndex = 0;
+
+    function displaySlide(index) {
+      carSlides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        slide.style.display = 'none';
+        if (i === index) {
+          slide.classList.add('active');
+          slide.style.display = 'block';
+        }
+      });
+    }
+
+    function goToNextSlide() {
+      currentSlideIndex = (currentSlideIndex + 1) % carSlides.length;
+      displaySlide(currentSlideIndex);
+    }
+
+    function goToPreviousSlide() {
+      currentSlideIndex = (currentSlideIndex - 1 + carSlides.length) % carSlides.length;
+      displaySlide(currentSlideIndex);
+    }
+
+    const nextBtn = document.querySelector('.carousel-next');
+    const prevBtn = document.querySelector('.carousel-prev');
+
+    nextBtn.addEventListener('click', goToNextSlide);
+    prevBtn.addEventListener('click', goToPreviousSlide);
+
+    // Auto-scroll every 3 seconds
+    setInterval(goToNextSlide, 2000);
+
+    // Show initial slide
+    displaySlide(currentSlideIndex);
+  });
+</script>
+
+
+    
+
+      <div class="description">
+        
+        <p>
+            Hire Car Rental in Odisha, <span class="highlight">Patra Tours and Travels</span>Odisha deals with <span class="highlight">Odisha Taxi Packages, Luxury Odisha cabs, Airport transfer, Railway Station Transfer</span>.
+            Our Taxi Services in Odisha has a very wide network. Naturally, when it comes to hiring a car or other vehicle your primary concern should be with its quality.
+            After reaching Odisha you will get Car & Coach Rental Services in Odisha with Wide Variants of Vehicles
+            <span class="highlight">Mini & Sedan Cars</span> – AC Indigo, AC Swift Dzire, AC Hyundai Xcent, AC Chevrolet Sail, AC Honda Amaze, AC Toyota Etios, AC Honda City, 
+            AC Hyundai Verna, AC Maruti Ciaz, AC Chevrolet Cruze, AC Toyota Corolla
+            <span class="highlight">SUVS</span> – AC Chevrolet Enjoy, AC Scorpio, AC Tavera, AC Innova, AC Innova Crysta, AC Toyota Fortuner
+            <span class="highlight">Luxury Cars</span> – Mercedes E250, Audi A6, Jaguar XF, Audi A4, Audi Q3 and BMW 3 Series
+            <span class="highlight">AC Mini Coaches</span> – 13 Seater Tata Winger Mini Van, 13 Seater Force Traveller, 17 Seater Force Traveller, 26 Seater Force Traveller (26+1 Driver)
+            <span class="highlight">Luxury Mini Coaches</span> – 15 Seater Luxury Force Traveller, 19 Seater Luxury Force Traveller
+            <span class="highlight">SML Coaches</span> – AC 18 Seater SML Coach, AC 28 Seater SML Coach
+            <span class="highlight">Luxury AC Bus Coaches</span> – 45 Seater Volvo Bus, 45 Seater AC Bus (45 +1 Driver), 41 Seater + 14 Sleeper Seat AC Bus (41 +14 + 1 Driver).
+        </p>
+
+        <p>
+            <span class="highlight">Patra Tours And Travels</span> provides Car And Coach Rental Services in whole Odisha (Orissa) i.e. 
+            Bhubaneswar, Bhubaneswar Airport (BBI), Cuttack, Puri, Sakhigopal, Konark, Chilika, Satapada, Khurda Road Junction, Chhatrapur, Berhampur, Ganjam, Gopalpur, Taptapani, 
+            Bhitarkanika National Park, Rourkela, Sambalpur, Angul, Balangir, Balasore, Chandipur, Bargarh, Bhadrak, Boudh, Deogarh, Dhenkanal, Paralakhemundi, Jagatsinghpur, Jajpur, Jharusuguda, 
+            Bhawanipatna, Phulbani, Kendrapara, Keonjhar, Koraput, Malkangiri, Baripada, Nowrangpur, Nayagarh, Nuapada, Rayagada, Sonepur, Similipal, Paradip, Dhabaleswar, 
+            Sundergarh, Barbil, Titlagarh, Damanjodi.
+        </p>
+         <!-- Additional content shortened for clarity -->
+      </div>
+      <div class="taxi_list_content">
+    <p class="headline"><strong><em>Click on the below link to check the rental fare</em></strong></p>
+
+    <ul class="link-list">
+      <li>Book Bhubaneswar to Puri Taxi: – <a href="#">CLICK HERE</a></li>
+      <li>Book Bhubaneswar Sightseeing and Puri Drop Package :– <a href="#">CLICK HERE</a></li>
+      <li>Book Puri Konark Bhubaneswar Puri Taxi Package: – <a href="#">CLICK HERE</a></li>
+      <li>Book Golden Triangle of Odisha Taxi Package: –<a href="#">CLICK HERE</a></li>
+      <li>Check Taxi Price from Bhubaneswar: –<a href="#">  CLICK HERE</a></li>
+      <li>Bhubaneswar to Chilika Fare: –<a href="#">CLICK HERE</a></li>
+      <li>>Bhubaneswar to Aska Fare: –<a href="#">CLICK HERE</a></li>
+      
+      <li>Bhubaneswar to Angul Fare: –<a href="#"> CLICK HERE</a></li>
+      <li>Bhubaneswar to Gopalpur Fare: –<a href="#"> CLICK HERE</a></li>
+      <li>Bhubaneswar to Balasore Fare :  –<a href="#">CLICK HERE</a></li>
+      <li>Bhubaneswar to Berhampur Fare: –<a href="#"> CLICK HERE</a></li>
+      <li>Bhubaneswar to Ghatagaon Fare:  –<a href="#">CLICK HERE</a></li>
+      <li>Bhubaneswar to Kendrapara Fare: –<a href="#">CLICK HERE</a></li>
+      <li>Bhubaneswar to Daspalla Fare: –<a href="#"> CLICK HERE</a></li>
+      <li>Bhubaneswar to Tara Tarini Berhampur Fare:  –<a href="#">CLICK HERE</a></li>
+      <li>Book Bhubaneswar Sightseeing and Puri Drop Package: –<a href="#">Click Here</a></li>
+      <li>Book Puri Konark Bhubaneswar Puri Taxi Package: –<a href="#"> Click Here</a></li>
+      <li>Book Golden Triangle of Odisha Taxi Package:  –<a href="#">Click Here</a></li>
+      <li>Check Taxi Price from Bhubaneswar: –<a href="#"> Click Here</a></li>
+    </ul>
+  </div>
+
+   <div class="circle-button" id="availabilityButton">
+    CHECK<br>AVAILABILITY<br>AND<br>BOOK ONLINE
+  </div>
+
+  <script>
+    const button = document.getElementById('availabilityButton');
+    const colors = ['#FF6F1E', '#4CAF50']; // Orange, Green, Blue, Pink
+    let index = 0;
+
+    setInterval(() => {
+      index = (index + 1) % colors.length;
+      button.style.backgroundColor = colors[index];
+    }, 2000); // every 2 seconds
+  </script>
+<div class="tab_container">
+  
+  <div class="tabs">
+  <div class="tab active" data-tab="tab1">LOCAL & OUTSTATION TARIFF</div>
+  <div class="tab" data-tab="tab2">SPECIAL TRANSPORT PACKAGES</div>
+  <div class="tab" data-tab="tab3">WEDDING CAR TARIFF</div>
+</div>
+<div class="content_tabs">
+
+<div class="active"  id="tab1">
+   <table class="content-table1" >
+ 
+    <tr>
+    <th style="background-color: #ff6f1e;"></th>
+    <th colspan="4">LOCAL TRIP</th>
+    <th >OUTSTATION / LONG DISTANCE<br><small>(Min 250Km Per Day)</small></th>
+  </tr>
+    <tr>
+    <th  style="background-color: #ff6f1e;">VARIANTS OF VEHICLE</th>
+     <th>80km/<br>8Hrs. (Rs.)</th>
+    <th>120km/<br>12Hrs. (Rs.)</th>
+    <th>Extra Hrs. (Rs.)</th>
+    <th>Extra Km (Rs.)</th>
+    <th >Per Km (Rs.)</th>
+  </tr>
+
+
+  <tr>
+    <td colspan="6" style="text-align: left; font-weight: bold; background-color: #f3f3f3; color: rgb(255, 207, 51);">MINI & SEDAN CARS</td>
+  </tr>
+
+
+    
+
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Amaze"><div class="car-name">AC HYUNDAI XCENT<br>(4 + 1 DRIVER)</div></td>
+    <td>2,100</td>
+    <td>2,600</td>
+    <td>150</td>
+    <td>13</td>
+    <td>13</td>
+  </tr>
+
+  <!-- Row 4 -->
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Etios"><div class="car-name">AC TOYOTA ETIOS (4+1 DRIVER)</div></td>
+    <td>2,200</td>
+    <td>2,850</td>
+    <td>150</td>
+    <td>14</td>
+    <td>14</td>
+  </tr>
+
+  <!-- Row 5 -->
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Honda+City"><div class="car-name">AC HONDA CITY (4+1 DRIVER)</div></td>
+    <td>3,100</td>
+    <td>3,850</td>
+    <td>200</td>
+    <td>17</td>
+    <td>17</td>
+  </tr>
+
+  <!-- Row 6 -->
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Verna"><div class="car-name">AC HYUNDAI VERNA (4+1 DRIVER)</div></td>
+    <td>3,200</td>
+    <td>3,950</td>
+    <td>200</td>
+    <td>17</td>
+    <td>17</td>
+  </tr>
+
+  <!-- Row 7 -->
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Ciaz"><div class="car-name">AC MARUTI SUZUKI CIAZ (4+1 DRIVER)</div></td>
+    <td>3,000</td>
+    <td>3,650</td>
+    <td>200</td>
+    <td>17</td>
+    <td>17</td>
+  </tr>
+  <tr>
+    <td colspan="6" style="text-align: left; font-weight: bold; background-color: #f3f3f3; color: rgb(255, 207, 51);">SUVS CARS</td>
+  </tr>
+
+  <!-- SUVs Data Rows -->
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Enjoy"><div class="car-name">AC CHEVROLET ENJOY (7+1 DRIVER)</div></td>
+    <td>2,500</td>
+    <td>3,000</td>
+    <td>160</td>
+    <td>15</td>
+    <td>15</td>
+  </tr>
+
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Scorpio"><div class="car-name">AC MAHINDRA SCORPIO (6+1 DRIVER)</div></td>
+    <td>2,800</td>
+    <td>3,400</td>
+    <td>180</td>
+    <td>16</td>
+    <td>16</td>
+  </tr>
+
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Tavera"><div class="car-name">AC CHEVROLET TAVERA (9+1 DRIVER)</div></td>
+    <td>2,600</td>
+    <td>3,100</td>
+    <td>180</td>
+    <td>15</td>
+    <td>15</td>
+  </tr>
+
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Innova"><div class="car-name">AC TOYOTA INNOVA (7+1 DRIVER)</div></td>
+    <td>3,000</td>
+    <td>3,600</td>
+    <td>180</td>
+    <td>17</td>
+    <td>17</td>
+  </tr>
+
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Crysta"><div class="car-name">AC INNOVA CRYSTA (7+1 DRIVER)</div></td>
+    <td>3,400</td>
+    <td>4,200</td>
+    <td>200</td>
+    <td>20</td>
+    <td>20</td>
+  </tr>
+
+  <tr>
+    <td><img src="https://via.placeholder.com/100x60?text=Fortuner"><div class="car-name">AC TOYOTA FORTUNER (7+1 DRIVER)</div></td>
+    <td>6,000</td>
+    <td>7,400</td>
+    <td>300</td>
+    <td>36</td>
+    <td>36</td>
+  </tr>
+   </table>
+
+</div>
+
+  <div id="tab3">
+ 
+
+    <table class="content-table">
+      <tr>
+        <th>NAME OF WEDDING CAR</th>
+        <th>Per Day (With Procession<br>(100 km/12 Hrs.) (Rs.))</th>
+        <th>Extra Hrs. (Rs.)</th>
+        <th>Extra Km (Rs.)</th>
+      </tr>
+
+      <tr>
+        <td><img src="https://via.placeholder.com/100x60?text=E250"><div class="car-name">MERCEDES E250</div></td>
+        <td>Rs. 35,000</td>
+        <td>1200</td>
+        <td>110</td>
+      </tr>
+      <tr>
+        <td><img src="https://via.placeholder.com/100x60?text=A6"><div class="car-name">AUDI A6</div></td>
+        <td>Rs. 33,000</td>
+        <td>900</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><img src="https://via.placeholder.com/100x60?text=XF"><div class="car-name">JAGUAR XF</div></td>
+        <td>Rs. 35,000</td>
+        <td>1200</td>
+        <td>110</td>
+      </tr>
+      <tr>
+        <td><img src="https://via.placeholder.com/100x60?text=A4"><div class="car-name">AUDI A4</div></td>
+        <td>Rs. 25,000</td>
+        <td>700</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td><img src="https://via.placeholder.com/100x60?text=Q3"><div class="car-name">AUDI Q3 (4+1 DRIVER)</div></td>
+        <td>Rs. 25,000</td>
+        <td>700</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td><img src="https://via.placeholder.com/100x60?text=BMW"><div class="car-name">BMW 3 SERIES</div></td>
+        <td>Rs. 33,000</td>
+        <td>900</td>
+        <td>100</td>
+      </tr>
+
+      
+    </table>
+  </div>
+
+</div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.content_tabs > div');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active classes
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Add active class to clicked tab and matching content
+      tab.classList.add('active');
+      document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+    });
+  });
+</script>
+    </section>
+
+
+  <!-- Left section end -->
+
+
+
+
+    <!-- Right Section   start-->
+
+    <section class="right">
+      <div class="cta">
+        <button class="btn-primary">CHECK AVAILABILITY<br>& BOOK ONLINE</button>
+        <button class="btn-secondary">BHUBANESWAR AIRPORT TAXI SERVICES ✈</button>
+      </div>
+
+      <div class="quote">
+        <h2 class="hitem">GET A QUOTE</h2>
+        <div class="btn-span">
+            <button class="btn-orange">
+                 <i class="fa-solid fa-car fa-lg" style="height: 20px;"></i> <p>TOUR PACKAGE</p></button>
+            <button class="btn-blue">
+              <i class="fa-solid fa-cart-flatbed-suitcase fa-lg" style="height: 20px;"></i> <p>PACKAGE</p></button>
+        </div>
+      </div>
+
+      <!-- <div class="instant-quote">GET A INSTANT QUOTATION</div> -->
+
+      <form class="enquiry">
+        <h3>ENQUIRY NOW</h3>
+        <!-- <input type="text" placeholder="Pick up Location"> -->
+         <select name="" id="" required>
+            <option value="">Pick up Location</option>
+            <option value="">Bhubneswar</option>
+            <option value="">Berhampur</option>
+            <option value="">Puri</option>
+         </select>
+        <!-- <input type="text" placeholder="Drop Location"> -->
+         <select name="" id="" required>
+            <option value="">Drop Location</option>
+            <option value="">Nayagard</option>
+            <option value="">Nuapada</option>
+            <option value="">Cuttack</option>
+            <option value="">Balesore"</option>
+         </select>
+        <!-- <input type="text" placeholder="Pick-Up Date (If Available)"> -->
+         <span style="display: grid; grid-template-columns: 60% 40%; gap: 5px;">
+            <input type="text" placeholder="pic up date " name="pick up date" required>
+            <input type="text" placeholder="pick up time" name="pick up time" required>
+         </span>
+        <!-- <input type="text" placeholder="Pick-Up Time"> -->
+        <span style="display: grid; grid-template-columns: 60% 40%; gap: 5px;">
+            <input type="text" placeholder="drop date "  required>
+            <input type="text" placeholder="drop time"  required>
+         </span>
+        <select>
+          <option>Vehicle Type - Cab / Mini Coach / Bus</option>
+          <option value="">Honda Active 4G</option>
+          <option value="">Pulser 180</option>
+          <option value=""> Suzuki 125</option>
+        </select>
+         <textarea name="" id="" style="min-height: 80px;max-height: fit-content; width: 100%;" placeholder="Taci Requirement % Preference (ifAny)"></textarea>
+        <h1>Contact Information</h1>
+        <input type="text" placeholder="Enter Your Name" required>
+        <input type="email" placeholder="Enter Your Email" required>
+        <input type="text" placeholder="Enter Your Contact Number" required>
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+
+    <div class="terms-box">
+       <div class="terms-header">
+          <span class="orange-strip"></span>
+          <h3>TERMS AND CONDITIONS</h3>
+        </div>
+        <ul class="terms-list">
+          <li>Toll Tax, Interstate Tax and Parking charges on actual basis</li>
+          <li>GST (5%) Extra Applicable on Total Billing</li>
+          <li>Kms and Hours will be calculated from the Garage to Garage.</li>
+          <li>Night Halt Charges from 10 PM - 6 AM (Light Vehicle - Rs.250, Traveller - Rs.300, Coach - Rs.1000).</li>
+          <li>Driver Allowance Applicable for Outstation Trip (Light Vehicle - Rs.250, Tempo - Rs.300, Coach - Rs.1000)</li>
+          <li>A vehicle covering below 250kms in a day shall be billed as per Local Tariff.</li>
+          <li>For Outstation Duty - Minimum 250 km's charged per Day.</li>
+          <li>Standing AC is Chargeable.</li>
+          <li>If a booking is canceled before 24 hrs of the scheduled time then 15% of the total billing will be charged.</li>
+          <li>While driving on Ghat roads, Air-Conditioning shall remain switched off.</li>
+          <li>All disputes are subject to Bhubaneswar legal jurisdiction only.</li>
+        </ul>
+      </div>
+
+       <div class="terms-box">
+       <div class="terms-header">
+          <span class="orange-strip"></span>
+          <h3>Value Added Services</h3>
+        </div>
+        <ul class="terms-list">
+          <li>Mail & SMS alerts on confirmation of the Booking</li>
+          <li>Mail & SMS alerts on allotment of Vehicle Registration No. & Driver Details before 04 hours of Pick-up.</li>
+          <li>Our PTT Representative or Driver Will be there with a Welcome Placard at Airport to receive guests.</li>
+          <li>Round the Clock Car Rental Services available for Tourist, Corporate, sightseeing trips, guided tour and special events.</li>
+          <li>Special Car Rental services are available for Wedding Ceremony</li>
+          <li>For refreshment - Snacks, Fruits & Juice will be arranged for delegates on request with additional charges.</li>
+          <li>For Outstation Duty - Minimum 250 km's charged per Day.</li>
+
+        </ul>
+      </div>
+    </section>
+
+
+   </div> 
+</div>
+  </main><br>
+
+  <script>
+let isOrange = false;
+
+function changeBackground() {
+  const container = document.querySelector('.btn-primary');
+  if (isOrange) {
+    container.style.backgroundColor = '#2e6da4';
+  } else {
+    container.style.backgroundColor = 'orange';
+  }
+  isOrange = !isOrange;
+}
+
+// Change every 3 seconds (3000 milliseconds)
+setInterval(changeBackground, 1000);
+
+
+
+let isOrangee = false;
+
+function changecolor() {
+  const container2 = document.querySelector('.hitem');
+  if (isOrangee) {
+    container2.style.color = 'orange';
+  } else {
+    container2.style.color = '#2e6da4';
+  }
+  isOrangee = !isOrangee;
+}
+
+// Change every 3 seconds (3000 milliseconds)
+setInterval(changecolor, 1000);
+</script>
+
+
+
+
+{% endblock %}

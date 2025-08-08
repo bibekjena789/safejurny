@@ -1,0 +1,296 @@
+.book_popup{
+    width:100%;
+    background-image:url("/static/images/background_all/img_back_2.jpeg");
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    display: flex;
+    justify-content: center;
+}
+
+.book_popup_container{
+    margin-top:100px;
+    margin-bottom:10px;
+    width:50%;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    height: fit-content;
+    justify-items: center;
+  
+}
+
+.book_popup_content{
+
+
+    width:100%;
+    height:fit-content;
+    flex-direction: column;
+    padding: 20px;
+   
+   
+    justify-items: center;
+    /* justify-content: space-around;
+     */
+    
+}
+.book_popup_content_img{
+  width:70%;
+    height:fit-content;
+    
+    
+    align-self: center;
+}
+
+.book_popup_content_img img{
+    width:100%;
+    align-self: center;
+}
+
+.book_popup_content_model_name{
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.book_popup_content_timing{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    align-items: center;
+    justify-items: center;
+}
+
+.book_popup_content_timing h3{
+    align-items:center;
+
+   text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.book_popup_content_timing label{
+    
+    align-content: center;
+    font-size: 22px;;
+    text-align: center;
+    margin-bottom: auto;
+    margin-left: 20px;
+   
+   
+}
+
+.book_popup_content_timing input{
+    width: fit-content;
+     margin-left: 20px;
+}
+
+
+.book_popup_content_start{
+    
+     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+.book_popup_content_end{
+  
+     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+   
+    
+}
+
+
+
+
+.book_popup_content_location{
+    margin-top: 10px;
+    width: 90%;
+  
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+
+
+
+.book_popup_content_location label{
+   
+    font-size: 20px;
+    
+}
+.book_popup_content_location input{
+    width:300px;
+}
+
+.book_popup_content_Driverchoice{
+    
+     display: flex;
+     flex-direction:column ;
+     width:70%;
+     
+}
+
+.book_popup_content_Driverchoice label{
+    font-size: 30px;
+}
+#book_popup_content_Driverchoices {
+    margin: 10px;
+    border-color: black ;
+}
+
+
+.book_popup_content_submit_btn{
+    margin-top: 20px;
+    justify-items: center;
+  
+}
+
+.book_popup_content_submit_btn button{
+
+    height:fit-content;
+    padding:5px;
+    background-color: darkgoldenrod;
+    border: 1px solid burlywood;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+@media(max-width:1120px){
+
+  
+
+    .book_popup_container{
+        width:70%;
+
+    }
+
+    /* .book_popup_content_pickup{
+        margin-top: 20px;
+       
+    }
+    .book_popup_content_dropoff{
+        margin-top: 20px;
+    }
+    .book_popup_content_location{
+        width: 80%;
+    } */
+    .book_popup_content_timing h3{
+        text-align: center;
+
+    font-size: 22px;
+}
+
+
+}
+
+
+@media(max-width:900px){
+
+  
+
+    .book_popup_container{
+        width:90%;
+
+    }
+
+
+    .book_popup_content_timing h3{
+       
+
+    font-size: 22px;
+    }
+    .book_popup_content_timing label{
+        font-size: 15px;
+    }
+}
+
+
+
+
+
+@media(max-width:600px){
+
+  
+
+    .book_popup_container{
+        width: 90%;
+
+    }
+   
+
+  
+    .book_popup_content_location{
+        width: 50px;
+    }
+
+  .book_popup_content_timing{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+  
+   
+}
+
+  .book_popup_content_start{
+    width:40%;
+      flex-direction: column;
+    }
+     .book_popup_content_end{
+        width:40%;
+        flex-direction: column;
+    }
+
+
+}
+
+@media(max-width:400px){
+    .book_popup{
+  
+    background-color: darkgoldenrod;
+    background-image: none;
+    
+    
+}
+
+    .book_popup_container{
+        width: 100%;
+        background-color: white;
+
+    }
+    
+  
+  
+  
+    .book_popup_content_timing {
+        width:100%;
+          display: flex;
+    flex-direction: column;
+        
+    }
+    .book_popup_content_start{
+        width:100%;
+    }
+    .book_popup_content_end{
+        width:100%;
+    }
+    .book_popup_content_location{
+        width:90%;
+    }
+   
+
+
+
+
+}

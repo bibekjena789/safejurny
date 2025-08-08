@@ -1,0 +1,46 @@
+{% extends "base_cli.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+{% load static %}
+<section class="all_data_home">
+    <section class="overlay">
+    <div class="modal show-popup">
+      <div class="modal-header">
+        <a href="#" style="text-decoration: none;">
+            <img src="{% static '/images/main_head/logo_main_safe_jurny.png' %}" alt="Logo" class="logo" />
+            <span class="title">Bike / Car Rentals</span>
+        </a>
+      </div>
+
+      <div class="search-container">
+        <form action="" method="post">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search or type city to select" />
+        </form>
+      </div>
+
+      <div class="city-grid">
+       <!-- <a href="{% url 'city_home' city='getbazar' %}" class="city-card" style="background-image: url('/static/images/main_head/logo_main_safe_jurny.jpeg')">GetBazar</a>
+        <a href="{% url 'city_home' city='mkcg' %}" class="city-card" style="background-image: url('./Photos/Delhi.jpg')">MKCG</a>
+        <a href="{% url 'city_home' city='firstget' %}" class="city-card" style="background-image: url('./Photos/Delhi.jpg')">First Get</a>
+       -->
+          {% for a in operation_location %}
+          <a href="{% url 'city_home' city=a.city %}" class="city-card" style="position:relative;display:flex;align-items:flex-end;justify-content:center;width:160px;height:160px;background-image:url({{a.Location_image.url}});background-size:cover;background-position:center;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.13);text-decoration:none;overflow:hidden;margin-bottom:0.5rem;">
+            <span style="position:absolute;bottom:0;width:100%;background:rgba(0,0,0,0.45);color:#fff;font-weight:bold;font-size:1.2rem;text-align:center;padding:0.7rem 0;letter-spacing:1px;">{{a.city| upper}}</span>
+          </a>
+          {% endfor %}
+      </div>
+
+      <div class="footer-text">SELECT CITY TO CONTINUE</div>
+    </section>
+</section>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const modal = document.querySelector(".modal");
+    setTimeout(() => {
+      modal.classList.add("show-popup");
+    }, 100); // slight delay for smoother animation
+  });
+</script>
+
+{% endblock %}

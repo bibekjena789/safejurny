@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    
+    <meta charset="UTF-8">
+    <title>{% block title %}| Safejourny{% endblock %} | Safejourny</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel=stylesheet href="{% static 'css/admin/admin_panel_footer.css'%}">
+    <link rel=stylesheet href="{% static 'css/admin/admin_panel_header.css'%}">
+    <link rel=stylesheet href="{% static 'css/admin/admin_panel.css'%}">
+    <link rel=stylesheet href="{% static 'css/admin/payment_list.css'%}">    
+    <link rel=stylesheet href="{% static 'css/admin/user_list.css'%}">
+
+   
+
+</head>
+
+    {% include "includes/admin_header.html" %}
+
+
+    {% block content %}
+    <!-- Page-specific content goes here -->
+    {% endblock %}
+
+    {% include "includes/admin_footer.html" %}

@@ -1,0 +1,88 @@
+
+
+.main_admin_section{
+  margin-left: 250px;
+  flex-grow: 1;
+  padding: 0px;
+  display: inline;
+  gap:5rem;
+  background-color: white;
+}
+
+
+
+.main_admin_section_container
+{
+ 
+  padding: 0px;
+  margin-top: 20px;
+
+gap:5rem;
+  flex-direction: column;
+  background-color:transparent;
+   transition: all 0.3s ease;
+   
+}
+.main_admin_section_MANAGE{
+  background-color: white;
+   
+  
+}
+.main_admin_section_vehicle{
+ 
+  margin: 0px;
+  padding: 5px;
+  
+}
+
+.main_admin_section_vehicle h1{
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 30px;
+      color: #333;
+
+    }
+
+    .main_admin_section_vehicle_table-container{
+      overflow-y: scroll;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+   .main_admin_section_vehicle_table-container table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .main_admin_section_vehicle_table-container th, td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    .main_admin_section_vehicle_table-container th {
+      background-color: #e6d226;
+      color: white;
+      font-weight: bold;
+    }
+
+    .main_admin_section_vehicle_table-container tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .main_admin_section_vehicle_table-container tr:hover {
+      background-color: #e6f0ff;
+    }
+
+    @media (max-width: 600px) {
+      .main_admin_section_vehicle_table-container th, td {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+
+
+   

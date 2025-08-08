@@ -1,0 +1,57 @@
+{% extends "base_adm.html" %}
+{% block title %}Admin panel{% endblock %}
+{% block content %}
+
+
+<section class="user-form-section">
+    <h2>Add User</h1>
+  <form class="user-form">
+    <label>User profile image:
+      <input type="file" name="profileImage">
+    </label>
+
+    <label>First name:
+      <input type="text" name="firstName">
+    </label>
+
+    <label>Last name:
+      <input type="text" name="lastName">
+    </label>
+
+    <label>Email:
+      <input type="email" name="email">
+    </label>
+
+    <label>Password hash:
+      <input type="password" name="password">
+    </label>
+
+    <label>Phone number:
+      <input type="text" name="phone">
+    </label>
+
+    <label>Drivers license number:
+      <input type="text" name="dlNumber">
+    </label>
+
+    <label>Addhar number:
+      <input type="text" name="aadhaar">
+    </label>
+
+    <label>User addhar image:
+      <input type="file" name="aadhaarImage">
+    </label>
+
+    <label>User dl image:
+      <input type="file" name="dlImage">
+    </label>
+
+    <label>Address:
+      <textarea name="address" rows="5"></textarea>
+    </label>
+  </form>
+</section>
+
+
+
+ {% endblock %}

@@ -1,0 +1,352 @@
+{% extends "base_staff.html" %}
+{% block title %}Verify User{% endblock %}
+{% block content %}
+
+
+<div class="main_admin_section_container">
+
+  <!-- ----------------------------VERIFY USER -->
+  <div class="main_admin_section_USER ">
+    <div class="main_admin_section_user">
+      <h2>All User</h2>
+      <div class="main_admin_section_user_search-box">
+        <form action="/staff/staff_userver" method="get">
+          {% csrf_token %}
+          <input type="text" name="search" id="admin_user_searchInput" placeholder="Search users...">
+        </form>
+      </div>
+      <div class="main_admin_section_user_table-container">
+        <table id="userTable1">
+          <thead>
+            <tr>
+              <th>Profile Image</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>User ID</th>
+              <th>Email</th>
+              <th>Password Hash</th>
+              <th>Phone Number</th>
+              <th>Driver License Number</th>
+              <th>Addhar Number</th>
+              <th>User Addhar image</th>
+              <th>User Dl image</th>
+              <th>Address</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+
+
+            {%for au in all_user%}
+            <tr>
+              <td>
+                {% if au.user_profile_image %}
+                <img src="{{ au.user_profile_image.url }}" alt="User Picture" width="100">
+                {% else %}
+                <img src="/media/profile_pic_user/profile_None_profile_20250721170523.jpg" alt="Default User Picture"
+                  width="100">
+                {% endif %}
+
+              </td>
+              <td>{{au.first_name}}</td>
+              <td>{{au.last_name}}</td>
+              <td>{{au.user_id}}</td>
+              <td>{{au.email}}</td>
+              <td>{{au.password_hash}}</td>
+              <td>{{au.phone_number}}</td>
+              <td>{{au.driver_license_number}}</td>
+              <td>{{au.addhar_number}}</td>
+
+              <td>
+
+                {% if au.user_profile_image %}
+                <img src="{{ au.user_addhar_image.url }}" alt="User Picture" width="100">
+                {% else %}
+                <img src=" media/profile_pic_user/profile_None_profile_20250721170523.jpg " alt="Default User Picture"
+                  width="100">
+                {% endif %}
+
+              </td>
+              <td>
+
+                {% if au.user_profile_image %}
+                <img src="{{ au.user_dl_image.url}}" alt="User Picture" width="100">
+                {% else %}
+                <img src="media/profile_pic_user/profile_None_profile_20250721170523.jpg " alt="Default User Picture"
+                  width="100">
+                {% endif %}
+              </td>
+
+              <td>{{au.address}}</td>
+
+              <td class="actions">
+                <a href="{% url 'user_verify' au.id %}"><button class="edit-btn">Verify</button></a>
+                <a href="{% url 'edit_user' au.id %}"><button class="delete-btn">Edit</button></a>
+              </td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div>
+       <button onclick="prevPage()" id="prevBtn">Prev</button>
+       <button onclick="nextPage()" id="nextBtn">Next</button>
+      </div>
+    </div>
+
+    <div class="main_admin_section_user">
+      <h2>User to be Verify</h2>
+
+      <div class="main_admin_section_user_table-container">
+        <table id="userTable2">
+          <thead>
+            <tr>
+              <th>Profile Image</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>User ID</th>
+              <th>Email</th>
+              <th>Password Hash</th>
+              <th>Phone Number</th>
+              <th>Driver License Number</th>
+              <th>Addhar Number</th>
+              <th>User Addhar image</th>
+              <th>User Dl image</th>
+              <th>Address</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {%for utb in tobe_verify%}
+            <tr>
+              <td>
+                {% if utb.user_profile_image %}
+                <img src="{{ utb.user_profile_image.url }}" alt="User Picture" width="100">
+                {% else %}
+                <img src="/media/profile_pic_user/profile_None_profile_20250721170523.jpg" alt="Default User Picture"
+                  width="100">
+                {% endif %}
+
+              </td>
+              <td>{{utb.first_name}}</td>
+              <td>{{utb.last_name}}</td>
+              <td>{{utb.user_id}}</td>
+              <td>{{utb.email}}</td>
+              <td>{{utb.password_hash}}</td>
+              <td>{{utb.phone_number}}</td>
+              <td>{{utb.driver_license_number}}</td>
+              <td>{{utb.addhar_number}}</td>
+
+              <td>
+
+
+
+                {% if utb.user_profile_image %}
+                <img src="{{ utb.user_addhar_image.url }}" alt="User Picture" width="100">
+                {% else %}
+                <img src=" media/profile_pic_user/profile_None_profile_20250721170523.jpg " alt="Default User Picture"
+                  width="100">
+                {% endif %}
+
+              </td>
+              <td>
+
+                {% if utb.user_profile_image %}
+                <img src="{{ utb.user_dl_image.url}}" alt="User Picture" width="100">
+                {% else %}
+               <img src="media/profile_pic_user/profile_None_profile_20250721170523.jpg" alt="Default User Picture"  width="100">
+                {% endif %}
+              </td>
+
+              <td>{{utb.address}}</td>
+
+              <td class="actions">
+                <a href="{% url 'user_verify' utb.id %}"><button class="edit-btn">Verify</button></a>
+                <a href="{% url 'edit_user' utb.id %}"><button class="delete-btn">Edit</button></a>
+              </td>
+            </tr>
+
+            {% endfor %}
+
+
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <button onclick="prevPage()" id="prevBtn">Prev</button>
+       <button onclick="nextPage()" id="nextBtn">Next</button>
+    </div>
+
+    <div class="main_admin_section_user">
+      <h2>Already Verified User</h2>
+
+      <div class="main_admin_section_user_table-container">
+        <table id="userTable3">
+          <thead>
+            <tr>
+              <th>Profile Image</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>User ID</th>
+              <th>Email</th>
+              <th>Password Hash</th>
+              <th>Phone Number</th>
+              <th>Driver License Number</th>
+              <th>Addhar Number</th>
+              <th>User Addhar image</th>
+              <th>User Dl image</th>
+              <th>Address</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {%for vu in verified%}
+            <tr>
+              <td>
+                {% if vu.user_profile_image %}
+                <img src="{{ vu.user_profile_image.url }}" alt="User Picture" width="100">
+                {% else %}
+                <img src="/media/profile_pic_user/profile_None_profile_20250721170523.jpg" alt="Default User Picture"
+                  width="100">
+                {% endif %}
+
+              </td>
+              <td>{{vu.first_name}}</td>
+              <td>{{vu.last_name}}</td>
+              <td>{{vu.user_id}}</td>
+              <td>{{vu.email}}</td>
+              <td>{{vu.password_hash}}</td>
+              <td>{{vu.phone_number}}</td>
+              <td>{{vu.driver_license_number}}</td>
+              <td>{{vu.addhar_number}}</td>
+
+              <td>
+
+
+
+                {% if vu.user_profile_image %}
+                <img src="{{ vu.user_addhar_image.url }}" alt="User Picture" width="100">
+                {% else %}
+                <img src=" media/profile_pic_user/profile_None_profile_20250721170523.jpg " alt="Default User Picture"
+                  width="100">
+                {% endif %}
+
+              </td>
+              <td>
+
+                {% if vu.user_profile_image %}
+                <img src="{{ vu.user_dl_image.url}}" alt="User Picture" width="100">
+                {% else %}
+                <img src="media/profile_pic_user/profile_None_profile_20250721170523.jpg " alt="Default User Picture"
+                  width="100">
+                {% endif %}
+              </td>
+
+              <td>{{vu.address}}</td>
+
+              <td class="actions">
+                <a href="{% url 'user_verify' vu.id %}"><button class="edit-btn">Verify</button></a>
+                <a href="{% url 'edit_user' vu.id %}"><button class="delete-btn">Edit</button></a>
+              </td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        
+       <button onclick="prevPage()" id="prevBtn">Prev</button>
+       <button onclick="nextPage()" id="nextBtn">Next</button>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+<script>
+  const searchInput = document.getElementById('admin_user_searchInput');
+  const searchForm = searchInput?.closest('form');
+  let searchTimeout;
+
+  if (searchInput && searchForm) {
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const value = searchInput.value.trim();
+        if (value.length >= 2) {
+          searchForm.submit();
+        }
+      }, 700);
+    });
+  }
+
+  // // move to prev and next data of table
+  // const tableBody1 = document.querySelector("#userTable1 tbody");
+  // const tableBody2 = document.querySelector("#userTable2 tbody");
+  // const tableBody3 = document.querySelector("#userTable3 tbody");
+  // const allRows1 = Array.from(tableBody1.querySelectorAll("tr")); // All original rows
+  // const allRows2 = Array.from(tableBody2.querySelectorAll("tr")); // All original rows
+  // const allRows3 = Array.from(tableBody3.querySelectorAll("tr")); // All original rows
+  // const rowsPerPage = 2;
+  // let currentPage = 0;
+
+  // function renderTable() {
+  //   // Clear all rows
+  //   tableBody1.innerHTML = "";
+  //   tableBody2.innerHTML = "";
+  //   tableBody3.innerHTML = "";
+
+  //   // Calculate range for current page
+  //   const start = currentPage * rowsPerPage;
+  //   const end = start + rowsPerPage;
+
+  //   // Show only relevant rows
+  //   const visibleRows1 = allRows1.slice(start, end);
+  //   const visibleRows2 = allRows2.slice(start, end);
+  //   const visibleRows3 = allRows3.slice(start, end);
+  //   visibleRows1.forEach(row => tableBody1.appendChild(row));
+  //    visibleRows2.forEach(row => tableBody2.appendChild(row));
+  //     visibleRows3.forEach(row => tableBody3.appendChild(row));
+
+  //   // Enable/Disable buttons
+  //   document.getElementById("prevBtn").disabled = currentPage === 0;
+  //   document.getElementById("nextBtn").disabled = end >= allRows1.length;
+  //    document.getElementById("prevBtn").disabled = currentPage === 0;
+  //   document.getElementById("nextBtn").disabled = end >= allRows2.length;
+  //    document.getElementById("prevBtn").disabled = currentPage === 0;
+  //   document.getElementById("nextBtn").disabled = end >= allRows3.length;
+  // }
+
+  // function prevPage() {
+  //   if (currentPage > 0) {
+  //     currentPage--;
+  //     renderTable();
+  //   }
+  // }
+
+  // function nextPage() {
+  //   if ((currentPage + 1) * rowsPerPage < allRows1.length) {
+  //     currentPage++;
+  //     renderTable();
+  //   }
+  //   if ((currentPage + 1) * rowsPerPage < allRows2.length) {
+  //     currentPage++;
+  //     renderTable();
+  //   }
+  //   if ((currentPage + 1) * rowsPerPage < allRows3.length) {
+  //     currentPage++;
+  //     renderTable();
+  //   }
+  // }
+
+  // // On load, show only first 2 rows
+  // renderTable();
+</script>
+
+{% endblock %}

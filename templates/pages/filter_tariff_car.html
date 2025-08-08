@@ -1,0 +1,915 @@
+{% extends "base_cli.html" %}
+{% block title %}Tariff{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  
+<section class="tariff-section">
+  <!-- <h2>{{vkl_name}} rental tariffs in {{ city | upper }}</h2> -->
+  <div class="tariff-section_main_banner">
+    <div class="main_banner_car_cab">
+      <div class="main_banner_container">
+        <img
+          src="https://www.patratravels.com/online/images/taxi.png"
+          width="50"
+          alt="Car Logo"
+        />
+        <!-- <li> <h4> Sanitized Cab & Coach Booking All India - Local & Outstation </h4>  </li> -->
+        <ul class="banner_container">
+          <li><h4>Sanitized Cab Booking - Local & Outstation</h4></li>
+          <li><h6>Book Oneway, Roundtrip & Multiway Trips Cabs</h6></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main_banner_content">
+      <div class="main_content_header">
+        <ul>
+          <li >
+            <a href="#" class="tab-link active" id="local_div" data-tab="local" data-tab="local">Local Trip</a>
+          </li>
+          <li class="">
+           <a href="#" class="tab-link" id="local_div" data-tab="package">Book Taxi</a
+            >
+          </li>
+          <li class="">
+           <a href="#" class="tab-link" id="local_div" data-tab="oneway">One-Way</a>
+          </li>
+          <li>
+            <a href="#" class="tab-link" id="local_div" data-tab="round">Round Trip</a>
+          </li>
+          <li>
+            <a href="#" class="tab-link" id="local_div" data-tab="airport">Airport </a
+            >
+          </li>
+          <li>
+           <a href="#" class="tab-link" id="multi_div" data-tab="multi">Multi-Way</a>
+          </li>
+        </ul>
+      </div>
+    <div class="main_banner_content_table " >
+    <div class="local_content_trip active" id="local" >
+      <form method="post">
+
+		  <div class="content_table_form_group">
+          <label>Pickup City/Town:</label>
+          <select>
+            <option>Select</option>
+          </select>
+        </div>
+        <div class="content_table_form_group">
+          <label>Duration:</label>
+          <select>
+            <option>Select</option>
+          </select>
+        </div>
+        <div class="content_table_form_group">
+          <label>Pickup Date:</label>
+          <input type="date" />
+        </div>
+        <div class="content_table_form_group">
+          <label>Pickup Time:</label>
+          <input type="time" value="10:00" />
+        </div>
+		</form>
+    </div>
+
+    <!-- taxi package content -->
+     <div class="local_content_trip " id="package" >
+      <form method="post">
+
+		  <div class="content_table_form_group">
+          <label>Pickup City/Town:</label>
+          <select>
+            <option>Select</option>
+          </select>
+        </div>
+        <div class="content_table_form_group">
+          <label>Select Taxi Package:</label>
+          <select>
+            <option>Select</option>
+          </select>
+        </div>
+        <div class="content_table_form_group">
+          <label>Journey Date:</label>
+          <input type="date" />
+        </div>
+        <div class="content_table_form_group">
+          <label>Journey Time:</label>
+          <input type="time" value="10:00" />
+        </div>
+		</form>
+    </div>
+    <!-- one way -->
+     <div class="local_content_trip one_way_form " id="oneway" >
+      <form method="post">
+
+		  <div class="content_table_form_group">
+          <label>Pickup City/Town:</label>
+          <select>
+            <option>Select</option>
+          </select>
+        </div>
+        <div class="content_table_form_group">
+          <label>Pickup Location:</label>
+          <input type="text" id="pickuploc" class="pickuploc" name="pickuploc" placeholder="Enter Pickup Location"  >
+        </div>
+         <div class="content_table_form_group">
+          <label>Drop Off Location:</label>
+          <input type="text" id="droploc"  class="droploc" name="droploc" placeholder="Enter Drop Off Location" 
+         >
+        </div>
+        <div class="content_table_form_group">
+          <label>Pickup Date:</label>
+          <input type="date" />
+        </div>
+        <div class="content_table_form_group">
+          <label>Pickup Time:</label>
+          <input type="time" value="10:00" />
+        </div>
+		</form>
+    </div> 
+    <!-- round -->
+      
+        <div class="local_content_trip round_form" id="round" >
+      <form method="post">
+
+		  <div class="content_table_form_group">
+          <label >Pickup City/Town:</label>
+          <select>
+            <option>Select</option>
+          </select>
+        </div>
+        <div class="content_table_form_group destination_content">
+          <label>Destination:</label>
+          <input type="text" id="destination" class="destination" name="pickuploc" placeholder="Type Destination"  >
+        </div>
+        
+        <div class="content_table_form_group">
+          <label>Pickup Date:</label>
+          <input type="date" />
+        </div>
+        <div class="content_table_form_group">
+          <label>Pickup Time:</label>
+          <input type="time" value="10:00" />
+        </div>
+        <div class="content_table_form_group">
+          <label>Drop Off Date:</label>
+          <input type="date" />
+        </div>
+        <div class="content_table_form_group">
+          <label>Drop Off Time:</label>
+          <input type="time" value="10:00" />
+        </div>
+		</form>
+    </div> 
+   
+     <!-- airport-->
+     <div class="local_content_trip airport_form " id="airport" >
+      <form method="post">
+        <div class="content_table_form_group trasfer">
+          <label>Transfer Type:</label>
+           <button type="button" style="background-color: orange; color: white;"  id="pickupBtn" onclick="setTransferType('pickup')">Pick Up</button>
+           <button type="button" style="background-color: navy; color: white;" id="dropoffBtn" onclick="setTransferType('dropoff')">Drop Off</button>
+        </div>
+
+		  <div class="content_table_form_group">
+          <label>Pickup City/Town:</label>
+          <select >
+            <option>Bhubaneswar , Odisha</option>
+          </select>
+        </div>
+       <div class="content_table_form_group">
+          <label>Pickup Location </label>
+          <input type="text"  id="pickupLocation" class="pickupLocation" name="pickuploc" placeholder="Enter Pickup Location"  >
+        </div>
+         <div class="content_table_form_group">
+          <label>Drop Off Location:</label>
+          <input type="text" id="dropoffLocation" class="dropoffLocation" name="droploc" placeholder="Enter Drop Off Location" 
+         >
+        </div>
+        
+        <div class="content_table_form_group">
+          <label>Pickup Date:</label>
+          <input type="date"  />
+        </div>
+        <div class="content_table_form_group">
+          <label>Pickup Time:</label>
+          <input type="time" value="10:00" />
+        </div>
+       
+		</form>
+    </div>
+    <!-- multi way-->
+     <div class="local_content_trip multi_form " id="multi" >
+      <form method="post">
+        
+
+		  <div class="content_table_form_group ">
+          <label>Pickup city & Drop Off city:</label>
+          <select id="select_town" class="select_town">
+            <option>Select</option>
+          </select>
+        </div>
+       
+        
+        <div class="content_table_form_group">
+          <label>Pickup Date:</label>
+          <input type="date"  />
+        </div>
+        <div class="content_table_form_group">
+          <label>Pickup Time:</label>
+          <input type="time" value="10:00" />
+        </div>
+         <div class="content_table_form_group">
+          <label>Drop Off Date:</label>
+          <input type="date" />
+        </div>
+        <div class="content_table_form_group">
+          <label>Drop Off Time:</label>
+          <input type="time" value="10:00" />
+        </div>
+       
+		</form>
+    <div id="destination_container" class="destination_container">
+    <!-- First Destination Input -->
+    <div class="destination_group">
+      <input type="text" placeholder="Type Destination"  style="width:300px"/>
+      <button class="add_btn" onclick="addDestination(this)">+</button>
+    </div>
+    </div>
+    
+  </div>
+  
+    <div class="main_banner_content_search">
+		<button class="search-btn">Search Cabs</button>
+
+	  </div>
+		
+  </div>
+	
+    </div>
+  </div>
+
+
+</section>
+<!-- home 1 -->
+
+<section class="taxi-packages-section">
+    <div class="taxi-packages-content">
+        <h1>Recommended Taxi Packages</h1>
+        <p><b>Taxi packages Includes</b> Fuel Charges, Toll Charges, Parking Charges, State-Tax, And Driver Allowance. No Extra Km Charges. No Extra Hour Charges. Cab Will be with you from your arrival till departure. All Transfer & Sightseeing as per itinerary.</p>
+    </div><br><br>
+
+    <div class="packages-scroll-wrapper">
+        <button class="scroll-button scroll-button-left" onclick="scrollLeft(this)">&#10094;</button>
+
+        <div class="packages-scroll-container">
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <!-- Repeat package-cards as needed -->
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+        </div>
+
+        <button class="scroll-button scroll-button-right" onclick="scrollRight(this)">&#10095;</button>
+    </div>
+    <div class="packages-scroll-wrapper">
+        <button class="scroll-button scroll-button-left" onclick="scrollLeft(this)">&#10094;</button>
+
+        <div class="packages-scroll-container">
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <!-- Repeat package-cards as needed -->
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+               <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+               <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+               <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+
+            <div class="package-card">
+                <img src="https://www.patratravels.com/online/admin/image/tourimage/tourpkgimage_51.jpg" alt="Daringbadi Taxi Package">
+                <h3>Daringbadi Taxi Package (3 days)</h3>
+
+                <div class="package-info-grid">
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">$2,100</b>(For 4 Person)</span>
+                    <span class="color">Starting from</span>
+                    <span><b style="color: orange;">Bhubneswar, Odisha</b></span>
+                </div><br>
+                <button>View Details</button>
+            </div>
+        </div>
+
+        <button class="scroll-button scroll-button-right" onclick="scrollRight(this)">&#10095;</button>
+    </div>
+
+    <!-- You had a duplicate section with the same content — removed for clarity, but you can duplicate if needed -->
+
+    <div class="car-sec">
+      <h1>Book Mini, Sedan, SUVs, Luxury Car Rental, AC Tempo Traveller & AC Coach</h1>
+      
+      <div class="car-grid">
+        <div class="car-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.hATy07VtPyhc2Ts_ECrOrAHaDO?pid=Api&rs=1&c=1&qlt=95&w=226&h=98" alt="car-Imag">
+         <div class="car-content">
+              <h3>Toyota Ac Sleeper</h3>
+             <p>capacity 12T </p>
+             <button>View Detauls</button>
+         </div>
+        </div>   
+        <div class="car-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.hATy07VtPyhc2Ts_ECrOrAHaDO?pid=Api&rs=1&c=1&qlt=95&w=226&h=98" alt="car-Imag">
+         <div class="car-content">
+              <h3>Toyota Ac Sleeper</h3>
+             <p>capacity 12T </p>
+             <button>View Detauls</button>
+         </div>
+        </div>       
+         <div class="car-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.hATy07VtPyhc2Ts_ECrOrAHaDO?pid=Api&rs=1&c=1&qlt=95&w=226&h=98" alt="car-Imag">
+         <div class="car-content">
+              <h3>Toyota Ac Sleeper</h3>
+             <p>capacity 12T </p>
+             <button>View Detauls</button>
+         </div>
+        </div> 
+       <div class="car-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.hATy07VtPyhc2Ts_ECrOrAHaDO?pid=Api&rs=1&c=1&qlt=95&w=226&h=98" alt="car-Imag">
+         <div class="car-content">
+              <h3>Toyota Ac Sleeper</h3>
+             <p>capacity 12T </p>
+             <button>View Detauls</button>
+         </div>
+        </div> 
+        <div class="car-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.hATy07VtPyhc2Ts_ECrOrAHaDO?pid=Api&rs=1&c=1&qlt=95&w=226&h=98" alt="car-Imag">
+         <div class="car-content">
+              <h3>Toyota Ac Sleeper</h3>
+             <p>capacity 12T </p>
+             <button>View Detauls</button>
+         </div>
+        </div> 
+         <div class="car-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.hATy07VtPyhc2Ts_ECrOrAHaDO?pid=Api&rs=1&c=1&qlt=95&w=226&h=98" alt="car-Imag">
+         <div class="car-content">
+              <h3>Toyota Ac Sleeper</h3>
+             <p>capacity 12T </p>
+             <button>View Detauls</button>
+         </div>
+        </div>  
+        
+        <div class="car-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.hATy07VtPyhc2Ts_ECrOrAHaDO?pid=Api&rs=1&c=1&qlt=95&w=226&h=98" alt="car-Imag">
+         <div class="car-content">
+              <h3>Toyota Ac Sleeper</h3>
+             <p>capacity 12T </p>
+             <button>View Detauls</button>
+         </div>
+        </div> 
+      </div>
+     
+    </div>
+</section><br>
+
+
+  <section class="aboutus">
+    <h1>Why You Love Us</h1>
+    <div class="about-grid">
+      <div class="about-card">
+        <img src="https://sp.yimg.com/ib/th/id/OIP.xUb739S3qYsY74VwMkZHmQHaEp?pid=Api&w=148&h=148&c=7&dpr=2&rs=1" alt="logo">
+        <h4>Clean sanitized vehicle</h4>
+      </div>
+      <div class="about-card">
+        <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&w=130&h=100&fit=crop" alt="logo">
+        <h4>Professional Drivers</h4>
+      </div>
+      <div class="about-card">
+        <img src="https://images.pexels.com/photos/1707828/pexels-photo-1707828.jpeg?auto=compress&w=130&h=100&fit=crop" alt="logo">
+        <h4>On Time Service</h4>
+      </div>
+      <div class="about-card">
+        <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&w=130&h=100&fit=crop" alt="logo">
+        <h4>Affordable Pricing</h4>
+      </div>
+      <div class="about-card">
+        <img src="https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&w=130&h=100&fit=crop" alt="logo">
+        <h4>24/7 Customer Support</h4>
+      </div>
+       <div class="about-card">
+        <img src="https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&w=130&h=100&fit=crop" alt="logo">
+        <h4>24/7 Customer Support</h4>
+      </div> 
+    </div>
+  </section>
+
+  <h1 class="carousel-title">Authentic Visitor Feedback</h1>
+  <section class="carousel feedback-carousel">
+    <div class="feedback-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.srNFFzORAaERcWvhwgPzVAHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121" alt="user-image">
+
+      <h4>Rajib Kumar Panigrrahi</h4>
+      <p>Great experience! The booking and coordination were handled professionally. Highly recommended.</p>
+     
+    </div>
+    <div class="feedback-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.srNFFzORAaERcWvhwgPzVAHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121" alt="user-image">
+
+      <h4>Priya Sharma</h4>
+      <p>Clean vehicles and polite drivers. Will book again for sure!</p>
+          
+
+    </div>
+    <div class="feedback-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.srNFFzORAaERcWvhwgPzVAHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121" alt="user-image">
+
+      <h4>Arun Mishra</h4>
+      <p>On time service and affordable pricing. Very satisfied.</p>
+    </div>
+    <div class="feedback-card">
+            <img src="https://up.yimg.com/ib/th/id/OIP.srNFFzORAaERcWvhwgPzVAHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121" alt="user-image">
+
+      <h4>Sunita Das</h4>
+      <p>Customer support was very helpful and available 24/7.</p>
+    </div>
+    <div class="feedback-card">
+      <img src="https://up.yimg.com/ib/th/id/OIP.srNFFzORAaERcWvhwgPzVAHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121" alt="user-image">
+      <h4>Vikram Singh</h4>
+      <p>Professional drivers and smooth ride. Thank you!</p>
+    </div>
+</section>
+
+  <!-- jQuery and Slick Carousel JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.feedback-carousel').slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false,
+        dots: true
+      });
+    });
+  </script>
+
+
+  <!-- mhgdwkxbk.jbdwj -->
+ <script>
+   document.addEventListener("DOMContentLoaded", function () {
+  const scrollContainers = document.querySelectorAll(".packages-scroll-container");
+  const scrollInterval = 3000; // 3 seconds
+  const scrollStep = 300; // Width of one card + gap
+
+  scrollContainers.forEach((container) => {
+    setInterval(() => {
+      // If scrolled to end, reset to beginning
+      if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+      }
+    }, scrollInterval);
+  });
+});
+const carGrid = document.querySelector('.car-grid');
+
+let scrollAmount = 0;
+const scrollStep = 300; // 290px card + ~5px for gap tolerance
+const maxScrollLeft = carGrid.scrollWidth - carGrid.clientWidth;
+
+function autoScrollCars() {
+  if(scrollAmount >= maxScrollLeft) {
+    scrollAmount = 0; // reset scroll to start
+  } else {
+    scrollAmount += scrollStep;
+  }
+  carGrid.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+}
+
+// Scroll every 3 seconds (adjust timing if needed)
+setInterval(autoScrollCars, 3000);
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   const carGrid = document.querySelector('.car-grid');
+//   const scrollAmount = carGrid.querySelector('.car-card').offsetWidth + 25; // card width + gap
+//   const visibleCards = 4;
+
+//   setInterval(() => {
+//     // Scroll right by one card
+//     carGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+//     // If at end, reset to start after delay
+//     if (Math.ceil(carGrid.scrollLeft + carGrid.clientWidth) >= carGrid.scrollWidth) {
+//       setTimeout(() => {
+//         carGrid.scrollTo({ left: 0, behavior: 'smooth' });
+//       }, 600); // wait for scroll to finish
+//     }
+//   }, 3000); // every 3 seconds
+// });
+
+
+ </script>
+
+ 
+
+
+<script>
+    function scrollLeft(button) {
+        const container = button.closest('.packages-scroll-wrapper').querySelector('.packages-scroll-container');
+        container.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+
+    function scrollRight(button) {
+        const container = button.closest('.packages-scroll-wrapper').querySelector('.packages-scroll-container');
+        container.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+</script>
+<script>
+  // Auto-scroll for .car-grid every 3 seconds
+  let scrollInterval;
+  let scrollIndex = 0;
+
+  function startAutoScroll() {
+    const container2 = document.querySelector('.car-grid');
+    const cards = container2.querySelectorAll('.car-card');
+    const cardWidth = cards[0].offsetWidth + 25; // including gap
+    const visibleCards = 3;
+
+    scrollInterval = setInterval(() => {
+      scrollIndex++;
+
+      if (scrollIndex > cards.length - visibleCards) {
+        scrollIndex = 0;
+        container2.scrollTo({
+          left: 0,
+          behavior: 'smooth',
+        });
+      } else {
+        container2.scrollTo({
+          left: scrollIndex * cardWidth,
+          behavior: 'smooth',
+        });
+      }
+    }, 3000); // 3 seconds
+  }
+
+  // Start scrolling after page loads
+  window.addEventListener('load', startAutoScroll);
+</script>
+
+
+
+
+
+
+
+
+
+<!-- home 1 end -->
+
+
+
+
+<!-- our route section -->
+
+<section class="our_route">
+   <h1>Our Routes</h1>
+
+  <div class="routes-container" id="routesContainer"></div>
+
+  
+
+  <script>
+    const routes = [
+      "Bhubaneswar to Puri", "Ranchi to Jamshedpur (Jharkhand)", "Agra to Delhi", "Ahmedabad to Mumbai",
+      "Angul to Kendrapara", "Angul to Koraput", "Angul to Sambalpur", "Angul to Nowrangpur", "Angul to Titlagarh",
+      "Angul to Sunabeda Koraput", "Aska to Bhubaneswar (Odisha)", "Aska to Koraput", "Balasore to Bhubaneswar",
+      "Balasore to Similipal National Park", "Balasore to Angul", "Balasore to Bargarh", "Balasore to Koraput",
+      "Balasore to Nowrangpur", "Balasore to Sunabeda", "Balasore to Titlagarh", "Balugaon to Koraput",
+      "Barbil to Sunabeda Koraput", "Barbil to Nowrangpur", "Barbil to Koraput", "Baripada to Koraput",
+      "Baripada to Nowrangpur", "Baripada to Sunabeda", "Bengaluru to Chennai", "Bengaluru to Tirupati",
+      "Bengaluru to Coorg", "Bengaluru to Mysore", "Bengaluru to Ooty", "Berhampur to Padmapur",
+      "Berhampur to Tikabali", "Berhampur to Bhubaneswar", "Berhampur to Koraput", "Berhampur to Nowrangpur",
+      "Berhampur to Sunabeda", "Berhampur to Angul", "Bhadrak to Titlagarh", "Bhadrak to Bhubaneswar",
+      "Bhadrak to Koraput", "Bhadrak to Nowrangpur", "Bhawanipatna to Sunabeda", "Bhubaneswar to Rourkela",
+      "Bhubaneswar to Angul", "Bhubaneswar to Bargarh", "Bhubaneswar to Bhadrak", "Bhubaneswar to Balasore",
+      "Bhubaneswar to Cuttack", "Bhubaneswar to Ganjam", "Bhubaneswar to Jajpur", "Bhubaneswar to Jharsuguda",
+      "Bhubaneswar to Kendrapara", "Bhubaneswar to Keonjhar", "Bhubaneswar to Khordha", "Bhubaneswar to Koraput",
+      "Bhubaneswar to Nayagarh", "Bhubaneswar to Sambalpur", "Bhubaneswar to Phulbani", "Bhubaneswar to Paradeep",
+      "Bhubaneswar to Muniguda", "Bhubaneswar to Konark", "Bhubaneswar to Brahmapur", "Bhubaneswar to Barbil",
+      "Bhubaneswar to Gopalpur", "Bhubaneswar to Damanjodi", "Bhubaneswar to Daringbadi", "Bhubaneswar to Chatrapur",
+      "Bhubaneswar to Aska", "Bhubaneswar to Kolkata", "Bhubaneswar to Gaya", "Bhubaneswar to Lanjigarh",
+      "Bhubaneswar to NTPC kaniha", "Bhubaneswar to Chilika Lake", "Bhubaneswar to Barkul",
+      "Bhubaneswar to Nowrangpur", "Bhubaneswar to Titlagarh", "Bhubaneswar to Talcher", "Burla to Sunabeda",
+      "Chatrapur to Bhubaneswar", "Chatrapur to Sunabeda Koraput", "Chatrapur to Nowrangpur",
+      "Chennai to Madurai (TamilNadu)", "Chennai to Mahabalipuram", "Chennai to Tirupati", "Chennai to Pondicherry",
+      "Chennai to Vellore", "Chennai to Munnar", "Cuttack to Koraput", "Cuttack to Sunabeda", "Cuttack to Titlagarh",
+      "Daringbadi to Bhubaneswar", "Daringbadi to Sunabeda"
+    ];
+
+    const routesContainer = document.getElementById("routesContainer");
+
+    routes.forEach(route => {
+      const routeElement = document.createElement("a");
+      routeElement.className = "route-box";
+      routeElement.href = `route.html?route=${encodeURIComponent(route)}`; // Dynamic link
+      routeElement.textContent = route;
+      routesContainer.appendChild(routeElement);
+    });
+  </script>
+</section>
+
+
+<!-- our route section end -->
+
+
+<!-- our city section -->
+ <section class="city_section">
+   <div class="city_section1">
+    <h2>Our City</h2>
+    <div class="cities_container" id="cities_Container">
+      <!-- Cities will be loaded here by JS -->
+    </div>
+  </div>
+
+  <script>
+    const cities = [
+      "Agra", "Ahmedabad", "Allahabad", "Amritsar", "Angul", "Aska", "Bagdogra", "Balasore", "Balugaon", "Barbil",
+      "Baripada", "Barkul (Chilika)", "Bengaluru", "Berhampur", "Bhadrak", "Bhawanipatna", "Bhubaneswar", "Bikaner",
+      "Burla", "Chatrapur", "Chennai", "Coimbatore", "Cuttack", "Daringbadi", "Darjeeling", "Dehradun", "Delhi",
+      "Gangtok", "Ganjam", "Gopalpur", "Gurgaon (Gurugram)", "Hyderabad", "Jaipur", "Jajpur", "Jamshedpur",
+      "Jharsuguda", "Joda", "Jodhpur", "Katra Vaishno Devi", "Kendrapara", "Keonjhar", "Khordha", "Kochi (Cochin)",
+      "Kolkata", "Konark", "Koraput", "Lanjigarh", "Madurai", "Mumbai", "Muniguda", "Nashik", "Nayagarh", "Panaji",
+      "Paradip", "Patna", "Phulbani", "Puducherry", "Pune", "Puri", "Raipur", "Rajasthan", "Ranchi", "Rourkela",
+      "Sambalpur", "Satkosia", "Shimla", "Siliguri ( NJP )", "Srikakulam", "Sunabeda (Koraput)", "Surat", "Talcher",
+      "Vijayawada", "Visakhapatnam"
+    ];
+
+    const container = document.getElementById("cities_Container");
+
+    cities.forEach(city => {
+      const link = document.createElement("a");
+      link.className = "city_item";
+      link.href = `city.html?city=${encodeURIComponent(city)}`;
+      link.innerHTML = `<img src=""> ${city}`;
+      container.appendChild(link);
+    });
+  </script>
+
+  
+ </section>
+ 
+
+<!-- our city section end -->
+
+<script>
+
+
+  const tabItems = document.querySelectorAll('.tab-link');
+const tabContents = document.querySelectorAll('.local_content_trip');
+
+tabItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // Remove active from all tabs and contents
+    tabItems.forEach(tab => tab.classList.remove('active'));
+    tabContents.forEach(content => content.classList.remove('active'));
+
+    // Activate the clicked tab and corresponding content
+    item.classList.add('active');
+    const tabId = item.getAttribute('data-tab');
+    document.getElementById(tabId).classList.add('active');
+  });
+});
+
+ const airport = "Biju Patnaik International Airport";
+
+    function setTransferType(type) {
+      const pickup = document.getElementById("pickupLocation");
+      const dropoff = document.getElementById("dropoffLocation");
+
+      if (type === "pickup") {
+        pickup.value = airport;
+        pickup.readOnly = true;
+        dropoff.value = "";
+        dropoff.readOnly = false;
+      } else if (type === "dropoff") {
+        dropoff.value = airport;
+        dropoff.readOnly = true;
+        pickup.value = "";
+        pickup.readOnly = false;
+      }
+    }
+
+    // Set default to pickup
+    setTransferType('pickup');
+
+
+
+     function addDestination(button) {
+      const container = document.getElementById('destination_container');
+
+      // Change current button to a remove button
+      button.textContent = '–';
+      button.classList.remove('add_btn');
+      button.classList.add('remove_btn');
+      button.setAttribute('onclick', 'removeDestination(this)');
+
+      // Create new destination input row
+      const newGroup = document.createElement('div');
+      newGroup.className = 'destination_group';
+      newGroup.innerHTML = `
+       <input type="text" placeholder="Type Destination"  style="width:300px"/>
+      <button class="add_btn" onclick="addDestination(this)">+</button>
+      `;
+
+      container.appendChild(newGroup);
+    }
+    function removeDestination(button) {
+  const inputDiv = button.parentElement;
+  inputDiv.remove();
+}
+    
+    document.addEventListener('DOMContentLoaded', function() {
+  const myHeader = document.getElementById('multi_div');
+  const myDiv = document.getElementById('destination_container');
+ 
+const myheader2=document.getElementById('local_div');
+
+ 
+  myheader2.addEventListener('click',function() {
+
+      myDiv.style.display = 'none'; 
+  });
+   myHeader.addEventListener('click', function() {
+  
+      myDiv.style.display = 'flex'; // Or 'flex', 'grid', etc., depending on your layout needs
+      
+   
+  });
+});
+   
+    
+  </script>
+
+
+{% endblock %}

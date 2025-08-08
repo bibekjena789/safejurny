@@ -1,0 +1,318 @@
+{% extends "base_cli.html" %} 
+{% load static %} {% block title %}Contact Us{% endblock %} 
+{% block content %}
+
+<div class="book_popup">
+  <div class="book_popup_container">
+    <form method="POST" action="{% url 'confirm_booking' city %}">
+      {% csrf_token %}
+      <div class="book_popup_content">
+        
+        <input type="hidden" id="user_id_hidden" value="{% if user_detail and user_detail.id %}{{ user_detail.id }}{% elif request.session.user_id %}{{ request.session.user_id }}{% else %}guest{% endif %}" />
+      <div class="book_popup_content_img">
+        {% if filter_vkl.0.vehicle_image %}
+          <img src="{{ filter_vkl.0.vehicle_image.url }}" alt="Vehicle Image" />
+        {% else %}
+          <img src="{% static 'images/default/document_icon.jpg' %}" alt="No Vehicle Image" />
+        {% endif %}
+      </div>
+      <div class="book_popup_content_model_name">{{ filter_vkl.0.model }}</div>
+      <div class="book_popup_content_timing">
+        <div class="book_popup_content_start">
+          <h3>Start Time</h3>
+          
+            <label for="sdate" >Date:</label>
+            <input type="date" id="book_popup_content_start_date" name="start_date"/>
+            <label for="stime">Time:</label>
+            <input type="time" id="book_popup_content_start_time"  name="start_time"/>
+          
+        </div>
+        <div class="book_popup_content_end">
+          <h3>End Time</h3>
+          
+          <label for="edate">Date:</label>
+          <input type="date" id="book_popup_content_end_date" name="end_date"/>
+          <label for="etime">Time:</label>
+          <input type="time" id="book_popup_content_end_time"  name="end_time" />
+          
+          
+        </div>
+      </div>
+
+      <div class="book_popup_content_location">
+        <div class="book_popup_content_pickup">
+          <label for="ploca">Pickup Location:</label>
+          <input type="text"id="book_popup_content_pickup" name="pickup_location"/>
+        </div>
+        <div class="book_popup_content_dropoff">
+          <label for="dloca">DropOff Location:</label>
+          <input type="text" id="book_popup_content_dropoff" name="dropoff_location"/>
+        </div>
+      </div>
+      <div clas="book_popup_content_Driverchoice">
+        <label for="driverchoice">Driver Choice:</label>
+        <select
+          id="book_popup_content_Driverchoices"
+          name="Driverchoices"
+          required
+        >
+          <option value="selfdrive">Self Drive</option>
+          <option value="driver">With Driver</option>
+        </select>
+      </div>
+      <div class="book_popup_content_booking_number">
+        <label for="Booking_number">Booking Number:</label>
+        <input type="text" id="Booking_number" name="booking_number" value="" readonly />
+      </div>
+      <input type="hidden" name="Vehicle_id" value="{{ filter_vkl.0.id }}" />
+
+      <div class="book_popup_content_totalPrice">
+        <label for="total_price">Total Price:</label>
+        <input type="number" id="totalPrice" name="totalPrice" readonly />
+      </div>
+
+      <div class="book_popup_content_submit_btn">
+        <button type="submit" id="submit_btn" name="submit_btn">Book Now</button>
+      </div>
+    </div>
+    </form>
+
+
+    {% comment %}
+    <script>
+     
+  
+
+
+      // Generate unique booking number and show in input on page load
+      function generateBookingNumber() {
+        const userId = document.getElementById('user_id_hidden').value || 'guest';
+        const now = new Date();
+        const pad = n => n.toString().padStart(2, '0');
+        const bookingNum = `${userId}_${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+        document.getElementById('Booking_number').value = bookingNum;
+        return bookingNum;
+      }
+
+      // Set booking number on page load
+      window.addEventListener('DOMContentLoaded', function() {
+        generateBookingNumber();
+      });
+
+      document.querySelector('form').addEventListener('submit', function(e) {
+        const bookingNum = document.getElementById('Booking_number').value;
+        if (!confirm(`Your Booking Number is: ${bookingNum}\nDo you want to confirm your booking?`)) {
+          e.preventDefault();
+        }
+      });
+      // Get all rates from Django context
+      const rates = {
+        hourly_wo_driver: {{ hourly_rate_wo_driver|default:0 }},
+        hourly_with_driver: {{ hourly_rate_with_driver|default:0 }},
+        daily_wo_driver: {{ daily_rate_wo_driver|default:0 }},
+        daily_with_driver: {{ daily_rate_with_driver|default:0 }},
+        weekly_wo_driver: {{ weekly_rate_wo_driver|default:0 }},
+        weekly_with_driver: {{ weekly_rate_with_driver|default:0 }},
+        fif_day_wo_driver: {{ fif_day_rate_wo_driver|default:0 }},
+        fif_day_with_driver: {{ fif_day_rate_with_driver|default:0 }},
+        monthly_wo_driver: {{ monthly_rate_wo_driver|default:0 }},
+        monthly_with_driver: {{ monthly_rate_with_driver|default:0 }}
+      };
+
+      function calculateTotalPrice() {
+        const sDate = document.querySelector('input[type="date"]');
+        const sTime = document.querySelector('input[type="time"]');
+        const eDate = document.querySelectorAll('input[type="date"]')[1];
+        const eTime = document.querySelectorAll('input[type="time"]')[1];
+        const totalPriceInput = document.getElementById('totalPrice');
+        const driverChoice = document.getElementById('book_popup_content_Driverchoices').value;
+
+        if (!sDate.value || !sTime.value || !eDate.value || !eTime.value) {
+          totalPriceInput.value = '';
+          return;
+        }
+
+        const start = new Date(sDate.value + 'T' + sTime.value);
+        const end = new Date(eDate.value + 'T' + eTime.value);
+        const diffMs = end - start;
+        if (diffMs <= 0) {
+          totalPriceInput.value = '';
+          return;
+        }
+        const diffHours = diffMs / (1000 * 60 * 60);
+        const diffDays = diffMs / (1000 * 60 * 60 * 24);
+        const diffWeeks = diffDays / 7;
+        const diffMonths = diffDays / 30;
+
+        let rate = 0;
+        // Select rate based on duration and driver choice
+        if (diffMonths >= 1) {
+          rate = driverChoice === 'driver' ? rates.monthly_with_driver : rates.monthly_wo_driver;
+          totalPriceInput.value = Math.ceil(diffMonths * rate);
+        } else if (diffDays >= 15) {
+          rate = driverChoice === 'driver' ? rates.fif_day_with_driver : rates.fif_day_wo_driver;
+          totalPriceInput.value = Math.ceil((diffDays / 15) * rate);
+        } else if (diffWeeks >= 1) {
+          rate = driverChoice === 'driver' ? rates.weekly_with_driver : rates.weekly_wo_driver;
+          totalPriceInput.value = Math.ceil(diffWeeks * rate);
+        } else if (diffDays >= 1) {
+          rate = driverChoice === 'driver' ? rates.daily_with_driver : rates.daily_wo_driver;
+          totalPriceInput.value = Math.ceil(diffDays * rate);
+        } else {
+          rate = driverChoice === 'driver' ? rates.hourly_with_driver : rates.hourly_wo_driver;
+          totalPriceInput.value = Math.ceil(diffHours * rate);
+        }
+      }
+
+      document.querySelectorAll('input[type="date"], input[type="time"], #book_popup_content_Driverchoices').forEach(function(input) {
+        input.addEventListener('change', calculateTotalPrice);
+      });
+
+      //jump to next field
+
+      const jumpFields = ['book_popup_content_start_date', 'book_popup_content_start_time', 'book_popup_content_end_date', 'book_popup_content_end_time','book_popup_content_pickup','book_popup_content_dropoff','book_popup_content_Driverchoices' ,'totalPrice'];
+
+  jumpFields.forEach((id, i) => {
+    const current = document.getElementById(id);
+    const next = document.getElementById(jumpFields[i + 1]);
+    
+    if (current && next) {
+      current.addEventListener('change', () => next.focus());
+    }
+  });
+
+
+    </script>
+
+    {% endcomment %}
+
+
+    <script>
+  // Generate unique booking number
+  function generateBookingNumber() {
+    const userId = document.getElementById('user_id_hidden').value || 'guest';
+    const now = new Date();
+    const pad = n => n.toString().padStart(2, '0');
+    const bookingNum = `${userId}_${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+    document.getElementById('Booking_number').value = bookingNum;
+
+    // Optional: Show booking number live
+    const liveDisplay = document.getElementById('live_booking_display');
+    if (liveDisplay) {
+      liveDisplay.textContent = bookingNum;
+    }
+
+    return bookingNum;
+  }
+
+  // Run when page loads
+  window.addEventListener('DOMContentLoaded', function() {
+    generateBookingNumber();
+  });
+
+  // Confirm booking number before submission
+  document.querySelector('form').addEventListener('submit', function(e) {
+    const bookingInput = document.getElementById('Booking_number');
+    if (!bookingInput.value) {
+      generateBookingNumber(); // fallback in case it's missing
+    }
+
+    const bookingNum = bookingInput.value;
+    if (!confirm(`Your Booking Number is: ${bookingNum}\nDo you want to confirm your booking?`)) {
+      e.preventDefault();
+    }
+  });
+
+  // All rate values from Django context
+  const rates = {
+    hourly_wo_driver: {{ hourly_rate_wo_driver|default:0 }},
+    hourly_with_driver: {{ hourly_rate_with_driver|default:0 }},
+    daily_wo_driver: {{ daily_rate_wo_driver|default:0 }},
+    daily_with_driver: {{ daily_rate_with_driver|default:0 }},
+    weekly_wo_driver: {{ weekly_rate_wo_driver|default:0 }},
+    weekly_with_driver: {{ weekly_rate_with_driver|default:0 }},
+    fif_day_wo_driver: {{ fif_day_rate_wo_driver|default:0 }},
+    fif_day_with_driver: {{ fif_day_rate_with_driver|default:0 }},
+    monthly_wo_driver: {{ monthly_rate_wo_driver|default:0 }},
+    monthly_with_driver: {{ monthly_rate_with_driver|default:0 }}
+  };
+
+  function calculateTotalPrice() {
+    const sDate = document.querySelector('input[name="start_date"]');
+    const sTime = document.querySelector('input[name="start_time"]');
+    const eDate = document.querySelector('input[name="end_date"]');
+    const eTime = document.querySelector('input[name="end_time"]');
+    const totalPriceInput = document.getElementById('totalPrice');
+    const driverChoice = document.getElementById('book_popup_content_Driverchoices').value;
+
+    if (!sDate.value || !sTime.value || !eDate.value || !eTime.value) {
+      totalPriceInput.value = '';
+      return;
+    }
+
+    const start = new Date(sDate.value + 'T' + sTime.value);
+    const end = new Date(eDate.value + 'T' + eTime.value);
+    const diffMs = end - start;
+    if (diffMs <= 0) {
+      totalPriceInput.value = '';
+      return;
+    }
+
+    const diffHours = diffMs / (1000 * 60 * 60);
+    const diffDays = diffMs / (1000 * 60 * 60 * 24);
+    const diffWeeks = diffDays / 7;
+    const diffMonths = diffDays / 30;
+
+    let rate = 0;
+    if (diffMonths >= 1) {
+      rate = driverChoice === 'driver' ? rates.monthly_with_driver : rates.monthly_wo_driver;
+      totalPriceInput.value = Math.ceil(diffMonths * rate);
+    } else if (diffDays >= 15) {
+      rate = driverChoice === 'driver' ? rates.fif_day_with_driver : rates.fif_day_wo_driver;
+      totalPriceInput.value = Math.ceil((diffDays / 15) * rate);
+    } else if (diffWeeks >= 1) {
+      rate = driverChoice === 'driver' ? rates.weekly_with_driver : rates.weekly_wo_driver;
+      totalPriceInput.value = Math.ceil(diffWeeks * rate);
+    } else if (diffDays >= 1) {
+      rate = driverChoice === 'driver' ? rates.daily_with_driver : rates.daily_wo_driver;
+      totalPriceInput.value = Math.ceil(diffDays * rate);
+    } else {
+      rate = driverChoice === 'driver' ? rates.hourly_with_driver : rates.hourly_wo_driver;
+      totalPriceInput.value = Math.ceil(diffHours * rate);
+    }
+  }
+
+  // Recalculate price on any input change
+  document.querySelectorAll('input[type="date"], input[type="time"], #book_popup_content_Driverchoices').forEach(function(input) {
+    input.addEventListener('change', calculateTotalPrice);
+  });
+
+  // Jump to next input automatically
+  const jumpFields = [
+    'book_popup_content_start_date',
+    'book_popup_content_start_time',
+    'book_popup_content_end_date',
+    'book_popup_content_end_time',
+    'book_popup_content_pickup',
+    'book_popup_content_dropoff',
+    'book_popup_content_Driverchoices',
+    'totalPrice'
+  ];
+
+  jumpFields.forEach((id, i) => {
+    const current = document.getElementById(id);
+    const next = document.getElementById(jumpFields[i + 1]);
+    if (current && next) {
+      current.addEventListener('change', () => next.focus());
+    }
+  });
+</script>
+
+      </div>
+    </div>
+    </form>
+    
+  </div>
+</div>
+
+{% endblock %}

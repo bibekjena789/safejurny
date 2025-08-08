@@ -1,0 +1,48 @@
+{% extends "base_staff.html" %}
+{% block title %}Userss{% endblock %}
+{% block content %}
+
+ <div class="admin_service_container">
+    <h2>Add Booking Details</h2>
+
+<form class="admin_service_custom-form">
+  <div class="admin_service_form-group">
+    <label for="vehicle_id">Vehicle id:</label>
+    <select id="admin_service_vehicle_id" name="admin_service_vehicle_id">
+      <option value="">--------</option>
+    </select>
+    
+  </div>
+
+  <div class="admin_service_form-group">
+    <label for="admin_service_user_id">User id:</label>
+    <select id="admin_service_user_id" name="admin_service_user_id">
+      <option value="">--------</option>
+    </select>
+    
+  </div>
+
+  <div class="admin_service_form-group">
+    <label for="admin_service_origin">Address of origin:</label>
+    <textarea id="admin_service_origin" name="admin_service_origin"></textarea>
+  </div>
+
+  <div class="admin_service_form-group">
+    <label for="admin_service_pic_drop">Pic drop:</label>
+    <select id="admin_service_pic_drop" name="admin_service_pic_drop">
+      <option value="">--------</option>
+      <option value="pickup">Pick up</option>
+      <option value="drop">Drop</option>
+
+      <option></option>
+    </select>
+  </div>
+
+  <div class="admin_service_form-actions">
+    <button type="submit">SAVE</button>
+    <button type="submit">Save and add another</button>
+    <button type="submit">Save and continue editing</button>
+  </div>
+</form>
+</div>
+{% endblock %}

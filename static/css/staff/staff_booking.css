@@ -1,0 +1,53 @@
+.addBooking_container {
+      max-width: 700px;
+      margin: auto;
+          background: linear-gradient(180deg,#ffc738,#adb3a1);
+   background-repeat: no-repeat;
+   
+   background-size: cover;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+   .addBooking_container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .addBooking_form-grid {
+      display: grid;
+      grid-template-columns: 150px 1fr ;
+      gap: 15px 10px;
+      align-items: center;
+    }
+
+    .addBooking_form-grid label {
+      font-weight: bold;
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    .addBooking_form-grid input,
+    .addBooking_form-grid select {
+      padding: 6px;
+      width: 100%;
+    }
+
+ 
+
+    .addBooking_full-row {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+   .addBooking_full-row  button {
+      margin: 5px;
+      padding: 8px 15px;
+      background-color: orange;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }

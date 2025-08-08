@@ -1,0 +1,61 @@
+
+{% extends "base_cli.html" %}
+{% load static %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+<section id="sect">
+  <!-- Left side -->
+  <div class="use-container">
+    <div class="left">
+    {% if user_detail.user_profile_image %}
+    <img src="{{ user_detail.user_profile_image.url }}" alt="User Picture" class="user-pic" />
+    {% else %}
+      <img src="{% static 'images/default/document_icon.jpg' %}" alt="Default User Picture" class="user-pic" />
+    {% endif %}
+    
+    <div class="user-info">
+      <h3 class="info-text">{{user_detail.first_name}}</h3>
+
+      <span class="info-text">{{user_detail.email}}</span>
+      
+      <span class="info-text">{{user_detail.phone_number}}</span>
+    </div>
+    
+    <div class="user-address">
+      <span class="label">Address:</span>
+      <span class="info-text"> {{user_detail.address}}</span>
+      
+    </div>
+  </div>
+
+  <!-- Right side -->
+  <div class="right">
+    <div class="user-docs">
+      <div class="doc-block">
+        <h2>Driving License:</h2>
+        {% if user_detail.user_dl_image %}
+          <img src="{{ user_detail.user_dl_image.url }}" alt="Driving License" class="doc-pic" />
+        {% else %}
+          <img src="{% static 'images/default/document_icon.jpg' %}" alt="No Driving License" class="doc-pic" />
+        {% endif %}
+      </div>
+      <div class="doc-block">
+        <h2>Aadhaar Card:</h2>
+        {% if user_detail.user_addhar_image %}
+          <img src="{{ user_detail.user_addhar_image.url }}" alt="Aadhaar Card" class="doc-pic" />
+        {% else %}
+          <img src="{% static 'images/default/document_icon.jpg' %}" alt="No Aadhaar Card" class="doc-pic" />
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="user-status">
+      <span class="status-label">User Status:</span>
+      <a href="{% url 'user_update_detail' city %}"><button class="status-btn">Update</button></a>
+      <a href="{% url 'user_bookings' city %}"><button class="status-btn">Check Your Bookings</button></a>
+    </div>
+  </div>
+  </div>
+</section>
+
+{% endblock %}

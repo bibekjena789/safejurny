@@ -1,0 +1,60 @@
+
+<section>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Company Info -->
+    <div class="footer-section">
+      <h2><span class="logo-icon">||</span> Safejourny</h2>
+      <p>Make Green NGO’s motto is “Greening the Future, One Step at a Time.” It reflects their mission to promote sustainable living,
+         protect natural resources and greener planet.
+      </p>
+      <div class="social-icons">
+        <span class="icon">🌐</span>
+        <span class="icon">🐦</span>
+        <span class="icon">📸</span>
+        <span class="icon">▶️</span>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="footer-section">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Career</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Collections</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>(000) 000-0000</p>
+      <p>example@gmail.com</p>
+      <p>2464 Royal Ln. Mesa, New Jersey 45463</p>
+    </div>
+
+    <!-- Subscription -->
+    <div class="footer-section">
+      <h3>Get the latest information</h3>
+      <form class="subscribe-form" method="post" action="{% url 'marketing_emails' city%}">
+        {% csrf_token %}
+        <input type="email" name="marketing_emails" placeholder="Email address" required>
+        <button clas="" id="arrow_footer_btn" type="submit">➤</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+  <p>Copyright © 2025 PixiZip Solutions. All Rights Reserved.</p>
+  <!--<div>
+    <a href="">User Terms & Conditions</a> |
+    <a href="">Privacy Policy</a>
+  </div>-->
+</div>
+</footer>
+</section>
+</body>
+</html>

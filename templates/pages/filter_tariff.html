@@ -1,0 +1,100 @@
+{% extends "base_cli.html" %}
+{% block title %}Tariff{% endblock %}
+{% block content %}
+<section class="tariff-section">
+  <h2>{{vkl_name}} rental tariffs in {{ city | upper }}</h2>
+  <p class="note">*All prices are exclusive of taxes and fuel. Images used for representation purposes only, actual color may vary.</p>
+
+  <div class="bike-grid">
+    {% for val in filter_vkl %}
+    <div class="bike-card">
+      <img src="{{ val.vehicle_image.url }}" alt="{{ val.model }}">
+      <div class="bike-name">{{ val.model }}</div>
+
+      <!-- Tabs -->
+      <div class="bike-tabs">
+        <div class="active">HOURLY</div>
+        <div>1 DAY</div>
+        <div>7 DAYS</div>
+        <div>15 DAYS</div>
+        <div>30 DAYS</div>
+      </div>
+
+      <!-- HOURLY -->
+      <div class="bike-details active">
+        <span><strong>24 * 7</strong></span>
+        <span>(Min 1 hour booking)</span>
+        <span>Booking Time: Anytime</span>
+        <span class="price">₹ {{ val.hourly_rate_wo_driver }} /hr 
+          <a href="{% url 'user_filter_book' city val.id %}" style="text-decoration: none; color: white;">  <button class="book-btn"><h3>Book Now</h3></button></a>
+        </span>
+        
+      </div>
+
+      <!-- 1 DAY -->
+      <div class="bike-details">
+        <span><strong>24 Hours Access</strong></span>
+        <span>(Min 1 day booking)</span>
+        <span>Booking Time: 0-24 hrs</span>
+        <span class="price">₹ {{ val.daily_rate_wo_driver }}/day 
+          <a href="{% url 'user_filter_book' city val.id %}" style="text-decoration: none; color: white;"> <button class="book-btn"><h3>Book Now</h3></button></a>
+        </span>
+
+      </div>
+      
+      <!-- 7 DAYS -->
+      <div class="bike-details">
+        <span><strong>Weekly Rental</strong></span>
+        <span>Valid for 7 Days</span>
+        <span>Includes maintenance support</span>
+        <span class="price">₹ {{ val.weekly_rate_wo_driver }}/week 
+          <a href="{% url 'user_filter_book' city val.id %}" style="text-decoration: none; color: white;">   <button class="book-btn"><h3>Book Now</h3></button></a>
+        </span>
+
+      </div>
+
+      <!-- 15 DAYS -->
+      <div class="bike-details">
+        <span><strong>Fortnight Package</strong></span>
+        <span>Valid for 15 Days</span>
+        <span>Flexible returns allowed</span>
+        <span class="price">₹ {{ val.fif_day_rate_wo_driver }}/15 days
+          <a href="{% url 'user_filter_book' city val.id %}" style="text-decoration: none; color: white;"> <button class="book-btn"><h3>Book Now</h3></button></a>
+        </span>
+
+      </div>
+
+      <!-- 30 DAYS -->
+      <div class="bike-details">
+        <span><strong>Monthly Rental</strong></span>
+        <span>Valid for 30 Days</span>
+        <span>Priority support included</span>
+        <span class="price">₹ {{ val.monthly_rate_wo_driver }}/month
+        <a href="{% url 'user_filter_book' city val.id %}" style="text-decoration: none; color: white;">   <button class="book-btn"><h3>Book Now</h3></button></a>
+        </span>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<script>
+document.querySelectorAll('.bike-card').forEach(function(card) {
+  const tabs = card.querySelectorAll('.bike-tabs div');
+  const details = card.querySelectorAll('.bike-details');
+
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(t => t.classList.remove('active'));
+      details.forEach(d => d.classList.remove('active'));
+
+      tab.classList.add('active');
+      if (details[idx]) {
+        details[idx].classList.add('active');
+      }
+    });
+  });
+});
+</script>
+
+{% endblock %}

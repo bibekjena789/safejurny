@@ -1,0 +1,58 @@
+
+<body>
+
+  <div class="container_admin_section">
+    <!-- Sidebar -->
+    <div id="sidebar_admin_section" class="sidebar_admin_section">
+      <button id="hiddenBtn">&#10006;</button>
+      <img class="profile_user_sidebar" src="{{ staff_data.image.url }}" alt="Profile Picture">
+      <h3 class="name_user_sidebar">{{ staff_data.full_name | upper }}</h3>
+      <input type="text" placeholder="Area" value='{{staff_data.area_forigen}}' readonly></input>
+
+      
+       <li><a href="/staff/staff_home">Home</a></li>
+      <li><a href="/staff/staff_userver">Verify User</a></li>
+      <li><a href="/staff/staff_veic">Manage Vehicles</a></li>
+      <li><a href="/staff/staff_ord">Bookings</a></li>
+      <li><a href="/staff/staff_logout">Log Out</a></li>
+
+
+    </div>
+
+    <!-- Main content -->
+    <div class="main_admin_section">
+
+      <div class="dashboard_heading">
+        <div class="dashboard_heading_head1">
+          <button id="toggleBtn_admin_section">&#9776;</button>
+          <h1>Dashboard</h1>
+        </div>
+
+        <!-- <select class="dashboard_heading_category">
+          <option>Admin</option>
+          <option class="dashboard_heading_category_home" value="1">Home</option>
+          <option class="dashboard_heading_category_verify" value="1">Verify User</option>
+          <option class="dashboard_heading_category_manage" value="2">Manage Vehicles</option>
+
+        </select> -->
+      </div>
+
+      <script>
+        const toggleBtn = document.getElementById('toggleBtn_admin_section');
+    const sidebar = document.getElementById('sidebar_admin_section');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+    });
+
+
+    const crossBtn = document.getElementById('hiddenBtn');
+    const sidebar1 = document.getElementById('sidebar_admin_section');
+
+    crossBtn.addEventListener('click', () => {
+      sidebar1.classList.toggle('hidden');
+    });
+
+
+    
+        </script>

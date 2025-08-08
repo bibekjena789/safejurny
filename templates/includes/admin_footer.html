@@ -1,0 +1,39 @@
+</div>
+  </div>
+</div>
+
+<!-- Overlay for mobile -->
+<div id="overlay"></div>
+
+<!-- JS for toggle -->
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const dropdown = document.getElementById('dropdown');
+  const dropdownToggle = document.getElementById('dropdown-toggle');
+
+  menuBtn.addEventListener('click', function () {
+    sidebar.classList.toggle('show');
+    overlay.style.display = sidebar.classList.contains('show') ? 'block' : 'none';
+  });
+
+  overlay.addEventListener('click', function () {
+    sidebar.classList.remove('show');
+    overlay.style.display = 'none';
+  });
+
+  dropdownToggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    dropdown.classList.toggle('active');
+  });
+
+  // Close dropdown if clicking anywhere else
+  window.addEventListener('click', function () {
+    dropdown.classList.remove('active');
+  });
+</script>
+
+<footer class="footer">
+    <h3>Copy Right to @PixiZip Solution 2025</h3>
+</footer>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    
+    <meta charset="UTF-8">
+    <title>{% block title %}| Safejourny{% endblock %} | Safejourny</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/includes/staff_footer.css'%}">
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/includes/staff_header.css'%}">
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/staff/staff_home.css'%}">
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/staff/staff_very.css'%}">
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/staff/staff_manage_vic.css'%}">
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/staff/staff_order.css'%}">
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/staff/staff_user.css'%}">
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/staff/staff_vehicle_form.css'%}">
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/staff/staff_booking.css'%}">
+    <link rel= 'stylesheet' type='text/css' href="{% static 'css/staff/staff_service_form.css'%}">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+    {% include "includes/staff_header.html" %}
+
+
+    {% block content %}
+    <!-- Page-specific content goes here -->
+    {% endblock %}
+
+    {% include "includes/staff_footer.html" %}

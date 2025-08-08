@@ -1,0 +1,84 @@
+{% extends "base_adm.html" %}
+{% block title %}Admin panel{% endblock %}
+{% block content %}
+    <div class="wrappe">
+      <div class="cards">
+        <div class="card">
+          <h3>Total Users</h3>
+          <p>$1,245</p>
+        </div>
+        <div class="card">
+          <h3>Rent Today</h3>
+          <p>58</p>
+        </div>
+        <div class="card">
+          <h3>Revenue</h3>
+          <p>$12,430</p>
+        </div>
+        <div class="card">
+          <h3>Order List</h3>
+          <p>$32</p>
+        </div>
+      </div>
+
+      <!-- Chart Section -->
+
+      <section class="user-table">
+        <div class="user-table-container">
+         <table>
+           <thead>
+             <tr>
+               <th>UserID</th>
+               <th>Username</th>
+               <th>City</th>
+               <th>Address</th>
+               <th>Phone</th>
+               <th>Email</th>
+               <th>Location</th>
+               <th>PIN</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td>001</td>
+               <td>JohnDoe</td>
+               <td>New York</td>
+               <td>123 Main St</td>
+               <td>+1-234-567-8901</td>
+               <td>john@example.com</td>
+               <td>USA</td>
+               <td>10001</td>
+             </tr>
+             <tr>
+               <td>002</td>
+               <td>JaneSmith</td>
+               <td>Los Angeles</td>
+               <td>456 Sunset Blvd</td>
+               <td>+1-987-654-3210</td>
+               <td>jane@example.com</td>
+               <td>USA</td>
+               <td>90001</td>
+             </tr><tr>
+               <td>001</td>
+               <td>JohnDoe</td>
+               <td>New York</td>
+               <td>123 Main St</td>
+               <td>+1-234-567-8901</td>
+               <td>john@example.com</td>
+               <td>USA</td>
+               <td>10001</td>
+             </tr>
+           </tbody>
+         </table>
+         
+        </div>
+        <div class="user-table-container1"></div>
+        <div class="user-table-container2"></div>
+        <div class="user-table-container3"></div>
+      </section>
+     
+    </div>
+  
+
+    {% endblock %}
+ 

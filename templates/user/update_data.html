@@ -1,0 +1,144 @@
+{% extends "base_cli.html" %}
+{% block title %}Userss{% endblock %}
+{% block content %}
+
+<div class="admin_addProduct_container">
+        <div class="admin_addProduct_form">
+            <h2>Add User Details</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="admin_addProduct_allform">
+
+                    <div class="admin_addProduct_allform_img div_allform">
+                        <label for="image">Profile Image:</label>
+
+                        <input type="file" name="profile_img" accept=".jpg,.jpeg,.png,.gif" id="admin_addProduct_allform_input-file">
+                         {% if user_data.user_profile_image %}
+                            <img src="{{ user_data.user_profile_image.url }}"  id="admin_addProduct_allform_profile-Pic">
+                        {% else %}
+                            <img src="/static/images/default/profileicon.jpg" id="admin_addProduct_allform_profile-Pic">
+                        {% endif %}
+                    </div>
+					
+					
+                    <div class="admin_addProduct_allform_gender div_allform ">
+
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="user_gender">
+                            <option value="">Choose Gender</option>
+                            <option value="female" {% if user_data.user_gender == "female" %}selected{% endif %}>Female</option>
+                            <option value="male" {% if user_data.user_gender == "male" %}selected{% endif %}>Male</option>
+                            <option value="other" {% if user_data.user_gender == "other" %}selected{% endif %}>Other</option>
+                        </select>
+
+                    </div>
+
+                    <div class="admin_addProduct_allform_fname_form div_allform">
+                        <label for="fname">First Name:</label>
+                        <input type="text" id="fname" placeholder="{{ user_data.first_name }}" name="fname">
+
+                    </div>
+
+                    <div class="admin_addProduct_allform_lname_form div_allform">
+                        <label for="lname">Last Name:</label>
+                        <input type="text" id="lname" placeholder="{{ user_data.last_name }}" name="lname">
+                    </div>
+
+                    <div class="admin_addProduct_allform_userId div_allform">
+                        <label for="user_Id">User ID:</label>
+                        <input type="text" id="USER_ID" value="{{ user.username }}" readonly name="user_id">
+                    </div>
+
+                    <div class="admin_addProduct_allform_mail div_allform">
+                        <label for="mail_id">Email:</label>
+                        <input type="email" id="mail_id" name="mail_id" value="{{ user.email }}" readonly required>
+                    </div>
+
+
+                    <div class="admin_addProduct_allform_phone div_allform">
+                        <label for="phone_no">Phone No:</label>
+                        <input type="text" id="phone_no" name="phone_no" value="{{ user.username }}" readonly required>
+                    </div>
+
+
+                    <div class="admin_addProduct_allform_license div_allform">
+                        <label for="dln">Driver License Number:</label>
+                        <input type="text" id="dln" name="drivers_license_number" placeholder="{{ user_data.driver_license_number }}" >
+                    </div>
+
+                    <div class="admin_addProduct_allform_adhar div_allform">
+                        <label for="an">Adhar Number:</label>
+                        <input type="text" id="an" name="addhar_number" placeholder="{{ user_data.addhar_number }}" >
+                    </div>
+
+                    <div class="admin_addProduct_allform_img div_allform">
+                        <label for="aimage">User AddharImage:</label>
+
+                        <input type="file" name="addhar_image" accept=".jpg,.jpeg,.png,.gif" id="admin_addProduct_allform_input-file">
+                        {% if user_data.user_addhar_image %}
+                        <img src="{{ user_data.user_addhar_image.url }}"  id="admin_addProduct_allform_profile-Pic">
+                        {% else %}
+                        <img src="/static/images/default/document_icon.jpg" id="admin_addProduct_allform_profile-Pic">
+                        {% endif %}
+                        
+                    </div>
+
+                    <div class="admin_addProduct_allform_img div_allform">
+                        <label for="image">User DL Image:</label>
+
+                        <input type="file" name="drivers_license_image" accept=".jpg,.jpeg,.png,.gif" id="admin_addProduct_allform_input-file">
+                        {% if user_data.user_dl_image %}
+                        <img src="{{ user_data.user_dl_image.url }}" id="admin_addProduct_allform_profile-Pic">
+                        {% else %}
+                        <img src="/static/images/default/document_icon.jpg" id="admin_addProduct_allform_profile-Pic">
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="admin_addProduct_allform_desc div_allform">
+                        <label for="message">Address:
+                        </label>
+                        <textarea name="address_user" placeholder="{{ user_data.address }}" id="message" cols="48" rows="7"></textarea>
+
+                    </div>
+
+                   
+
+                        <div class="admin_addProduct_allform_submit div_allform">
+
+                        <input type="submit" name="save_add" value="Save">
+
+                        <a href="javascript:history.back()" style="text-decoration: none; width: fit-content;"><input type="button" name="back" style='padding: 10px 10px; width:300px; height:70%; background-color: #f1f1f1; border: 1px solid #ccc; border-radius: 4px;' value="Back"></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        let profilePic = document.getElementById("admin_addProduct_allform_profile-Pic");
+        let inputfile = document.getElementById("admin_addProduct_allform_input-file");
+
+        inputfile.onchange = function () {
+            profilePic.src = URL.createObjectURL(inputfile.files[0])
+        };
+
+
+        // jump to next field
+
+       
+  const jumpFields = ['admin_addProduct_allform_input-file', 'gender', 'fname', 'lname','USER_ID','mail_id','phone_no','dln','an','admin_addProduct_allform_input-file','admin_addProduct_allform_input-file','message'];
+
+  jumpFields.forEach((id, i) => {
+    const current = document.getElementById(id);
+    const next = document.getElementById(jumpFields[i + 1]);
+    
+    if (current && next) {
+      current.addEventListener('change', () => next.focus());
+    }
+  });
+
+
+    </script>
+
+{% endblock %}

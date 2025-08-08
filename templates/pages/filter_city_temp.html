@@ -1,0 +1,257 @@
+{% extends "base_cli.html" %} 
+{% block title %}Home{% endblock %} 
+{% block content %}
+
+<section class="all_data_home">
+  <!-- <div class="hero_section_date_time">
+    <form
+      action="{% url 'user_filter' city=city %}"
+      id="filter_home"
+      method="POST"
+      class="flter_home_form"
+    >
+      {% csrf_token %}
+
+      <h2>Search your next ride</h2>
+      <label for="pickupTime">Pickup</label>
+      <div class="hero_section_date_time_input_time">
+        <input
+          type="date"
+          id="pickupDate"
+          name="filter_from_date"
+          placeholder="Date"
+          required
+        />
+        <input
+          type="time"
+          id="pickupTime"
+          name="filter_from_time"
+          placeholder="Time"
+          required
+        />
+      </div>
+      <label for="dropoffTime">Drop-off</label>
+      <div class="hero_section_date_time_input_time">
+        <input
+          type="date"
+          id="dropoffDate"
+          name="filter_to_date"
+          aria-placeholder="Date"
+          required
+        />
+        <input
+          type="time"
+          id="dropoffTime"
+          name="filter_to_time"
+          placeholder="Time"
+          required
+        />
+      </div>
+      <input type="submit" value="Submit" />
+    </form>
+      </div>-->
+
+  <div class="hero_section_home_page" style="display: flex"> 
+    <div class='back_main_cov'>
+    <div
+      class="hero_section_home_page_bike"
+      
+    >
+      <h1>Book your Bike with us and enjoy the journey.</h1>
+      <p></p>
+      <a
+        href="{% url 'user_tariff' city=city %}"
+        class="hero_section_home_page_btn"
+        >Book Now</a
+      >
+    </div>
+
+    <div
+      class="hero_section_home_page_car"
+     
+    >
+      <h1>Book your Car with us and enjoy the journey.</h1>
+      <p></p>
+      <a
+        href="{% url 'filter_taxi' city=city %}"
+        class="hero_section_home_page_btn"
+        >Book Now</a
+      >
+    </div>
+    </div>
+  </div>
+</div>
+</section>
+<section class="body-part">
+  <img src="/static/images/background_all/img_back_2.jpeg" alt="" />
+
+  {% comment %}
+  <button
+    style="height: 40px; width: 170px; border-radius: 20px; font-size: 17px"
+  >
+    <a href="" style="text-decoration: none"
+      >Subscribe Now <span><i class="fa-solid fa-arrow-right"></i></span
+    ></a>
+  </button>
+  {% endcomment %}
+</section>
+
+<section class="fleet-section">
+  <h2>OUR FLEET</h2>
+
+  <div class="fleet-container">
+    {% for vcl_dt in filter_vkl|slice:':3' %}
+
+    <div class="fleet-card">
+      <img src="{{ vcl_dt.vehicle_image.url }}" alt="{{ vcl_dt.model }}" />
+      <h3>{{ vcl_dt.model }}</h3>
+      <div class="price">₹{{ vcl_dt.hourly_rate_wo_driver }}/hour</div>
+      <div class="price">{{ vcl_dt.status }}</div>
+      <a
+        href="{% url 'user_filter_book' city vcl_dt.id %}"
+        style="text-decoration: none; color: white"
+      >
+        <button class="book-btn">BOOK NOW</button></a
+      >
+    </div>
+    {% endfor %}
+
+    <a
+      href="user_tariff"
+      class="fleet-card"
+      style="text-decoration: none; color: black"
+    >
+      {% load static %} <img src="{% static "/images/main_head/logo_main_safe_jurny.png" %}" alt="Honda Dio 125">
+      <h3>mbm</h3>
+      <div class="price">Clock see more..</div>
+      <div class="price">dsc</div>
+      <button class="book-btn">Load More...</button>
+    </a>
+  </div>
+</section>
+
+{% comment %}
+<section class="impact-section">
+  <h2>Our impact in <span>numbers</span></h2>
+
+  <div class="impact-grid">
+    <!-- Row 1 -->
+    <div class="impact-box">
+      <div class="impact-stat">1.6M +</div>
+      <div class="impact-subtext">Users trust us</div>
+    </div>
+
+    <img
+      src="https://tse2.mm.bing.net/th/id/OIP.Rk5t3WYp-PyRfM6c_Z0i6QHaEi?pid=Api&P=0&h=220"
+      class="impact-image"
+      alt="user1"
+    />
+    <img
+      src="https://via.placeholder.com/100x100?text=2"
+      class="impact-image"
+      alt="user2"
+    />
+    <img
+      src="https://tse2.mm.bing.net/th/id/OIP.Rk5t3WYp-PyRfM6c_Z0i6QHaEi?pid=Api&P=0&h=220"
+      class="impact-image highlight-border"
+      alt="user3"
+    />
+
+    <div class="impact-box">
+      <div class="impact-stat" style="color: black">163M +</div>
+      <div class="impact-subtext">Kms Travelled</div>
+    </div>
+
+    <!-- Row 2 -->
+    <img
+      src="https://tse2.mm.bing.net/th/id/OIP.Rk5t3WYp-PyRfM6c_Z0i6QHaEi?pid=Api&P=0&h=220"
+      class="impact-image"
+      alt="user4"
+    />
+    <img
+      src="https://via.placeholder.com/100x100?text=5"
+      class="impact-image highlight-border"
+      alt="user5"
+    />
+    <img
+      src="https://via.placeholder.com/100x100?text=6"
+      class="impact-image"
+      alt="user6"
+    />
+    <img
+      src="https://tse2.mm.bing.net/th/id/OIP.Rk5t3WYp-PyRfM6c_Z0i6QHaEi?pid=Api&P=0&h=220"
+      class="impact-image"
+      alt="user7"
+    />
+    <img
+      src="https://via.placeholder.com/100x100?text=8"
+      class="impact-image"
+      alt="user8"
+    />
+
+    <!-- Row 3 -->
+    <div class="impact-box">
+      <div class="impact-stat" style="color: black">1.6M +</div>
+      <div class="impact-subtext">App Downloads</div>
+    </div>
+
+    <img
+      src="https://via.placeholder.com/100x100?text=9"
+      class="impact-image"
+      alt="user9"
+    />
+    <img
+      src="https://via.placeholder.com/100x100?text=10"
+      class="impact-image"
+      alt="user10"
+    />
+    <img
+      src="https://via.placeholder.com/100x100?text=11"
+      class="impact-image highlight-border"
+      alt="user11"
+    />
+
+    <div class="impact-box">
+      <div class="impact-stat">1M +</div>
+      <div class="impact-subtext">Seamless Bookings</div>
+    </div>
+  </div>
+</section>
+{% endcomment %}
+<script>
+  function formatDate(date) {
+    return date.toISOString().split("T")[0];
+  }
+
+  // Set min and max dates for 30-day range
+  const today = new Date();
+  const maxDate = new Date();
+  maxDate.setDate(today.getDate() + 60);
+
+  const minDateStr = formatDate(today);
+  const maxDateStr = formatDate(maxDate);
+
+  document.getElementById("pickupDate").setAttribute("min", minDateStr);
+  document.getElementById("pickupDate").setAttribute("max", maxDateStr);
+  document.getElementById("dropoffDate").setAttribute("min", minDateStr);
+  document.getElementById("dropoffDate").setAttribute("max", maxDateStr);
+
+  function showTimeInputs() {
+    document.getElementById("timeInputs").style.display = "block";
+  }
+
+  // jump to next input field
+
+  document.getElementById("pickupDate").addEventListener("change", () => {
+    document.getElementById("pickupTime").focus();
+  });
+
+  document.getElementById("pickupTime").addEventListener("change", () => {
+    document.getElementById("dropoffDate").focus();
+  });
+
+  document.getElementById("dropoffDate").addEventListener("change", () => {
+    document.getElementById("dropoffTime").focus();
+  });
+</script>
+{% endblock %}

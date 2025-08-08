@@ -1,0 +1,107 @@
+{% extends "base_staff.html" %}
+{% block title %}Orders{% endblock %}
+{% block content %}
+
+
+
+
+
+
+<!-- -------------------------------- order  -->
+<div class="main_admin_section_ORDER ">
+
+  <div class="main_admin_section_orderlist">
+    <h2>Ride Details</h2>
+    <div class="main_admin_section_user_search-box">
+        <form action="/staff/staff_ord/" method="get">
+          {% csrf_token %}
+          <input type="text" name="search" id="admin_order_searchInput" placeholder="Search users...">
+        </form>
+      </div>
+    <div class="main_admin_section_order_table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Booking Number</th>
+          <th>User</th>
+          <th>Vehicle</th>
+          <th>Start Date</th>
+          <th>Start Time</th>
+          <th>End Date</th>
+          <th>End Time</th>
+          <th>Pickup Location</th>
+          <th>Dropoff Location</th>
+          <th class="center">Driver Choice</th>
+          <th class="center">Total Price</th>
+          <th>User Price</th>
+          <th> Booking Status</th>
+        </tr>
+      </thead>
+      <tbody>
+       {% for bid in book_data %}
+        <tr>
+          <td>{{ bid.booking_number }}</td>
+          <td>{{ bid.user }}</td>
+          <td>{{ bid.vehicle }}</td>
+          <td>{{ bid.start_date }}</td>
+          <td>{{ bid.start_time }}</td>
+          <td>{{ bid.end_date }}</td>
+          <td>{{ bid.end_time }}</td>
+          <td>{{ bid.pickup_location_id }}</td>
+          <td>{{ bid.dropoff_location_id }}</td>
+          <td>{{ bid.driver_choice }}</td>
+          <td>{{ bid.total_price }}</td>
+          <td>
+            <form method="post" class="main_admin_section_order_user_price" action="{% url 'staff_update_user_price' bid.id %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="booking_id" value="{{ bid.id }}">
+        <input type="number" name="new_price" value="{{ bid.user_price }}" placeholder="{{ bid.user_price }}" size="10">
+        <input type="submit" name="Submit" value="Ok" id="main_admin_section_order_price_btn" style="width: fit-content; height:20px">
+      </form>
+          </td>
+          <td>
+
+            <form class="main_admin_section_order_status" action="{% url 'staff_update_user_book_status' bid.id %}" method="POST">
+              {% csrf_token %}
+              <select name="new_status"  style="font-size: 12px; padding: 2px;">
+                <option value="" {% if bid.booking_status == "" %} selected {% endif %}>Select</option>
+                <option value="Complete" {% if bid.booking_status == "Complete" %} selected {% endif %}>Completed</option>
+                <option value="InComplete" {% if bid.booking_status == "InComplete" %} selected {% endif %}>Incomplete</option>
+                <option value="UnderProcess" {% if bid.booking_status == "UnderProcess" %} selected {% endif %}>Under Process</option>
+              </select>
+       
+        <button type="submit" name="Submit" value="Ok"  id="main_admin_section_order_status_btn" style="width: fit-content; height:20px">Ok</button>
+      </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<script>
+   const searchInput = document.getElementById('admin_order_searchInput');
+  const searchForm = searchInput?.closest('form');
+  let searchTimeout;
+
+  if (searchInput && searchForm) {
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const value = searchInput.value.trim();
+        if (value.length >= 2) {
+          searchForm.submit();
+        }
+      }, 700);
+    });
+  }
+
+</script>
+
+
+
+
+
+{% endblock %}

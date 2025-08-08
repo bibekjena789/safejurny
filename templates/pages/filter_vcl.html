@@ -1,0 +1,105 @@
+
+ 
+{% extends "base_cli.html" %}
+{% block title %}Tariff{% endblock %}
+{% block content %}
+
+
+
+ <style>
+
+
+
+   
+  </style>
+</head>
+<body>
+
+  <section class="section">
+    <form class="filter-panel" method="post" action="{% url 'user_filter' city=city %}">
+       <div class="filter-group">
+        <label>Pickup date</label>
+        <input type="date" name="pickup-date" value="2025-07-22" required>
+        <label>Time</label>
+        <input type="time" name="pickup-time" value="09:00" required>
+       </div>
+       <div class="filter-group">
+        <label>Dropoff date</label>
+        <input type="date" name="dropoff-date" value="2025-07-23" required>
+        <label>Time</label>
+        <input type="time" name="dropoff-time" value="10:30" required>
+       </div>
+       <div class="checkbox">
+        <label for="loc1">Hotel Bike Ride (MKGC college Road Berhampur)</label>
+       </div><br>
+        <button class="apply-btn" type="submit">Apply filter</button>
+    </form>
+
+
+    <!-- Right Result Panel -->
+    <div class="results-panel">
+      <div class="sort-bar">
+        <span class="active">Relevance</span>
+        <span>Price - Low to High</span>
+        <span>Price - High to Low</span>
+      </div>
+      <p class="note">*All prices are exclusive of taxes and fuel. Images used for representation purposes only, actual color may vary.</p>
+
+      <div class="grid-img">
+      {% for vc in filter_vkl %}
+        <div class="bike-card">
+        <img src="{{vc.vehicle_image.url}}" alt="Honda Activa 5G">
+        <h2>{{vc.model}}</h2>
+        <div class="location">Available at<br>Hotel Byke Ride {{vc.allot_city}}</div>
+         <div class="time-slot">
+           <div>
+            {{filter_st_time}}<br>
+            <small>{{filter_st_date}}</small>
+           </div>
+           
+           <div>to</div>
+
+           <div>
+            {{filter_end_time}}<br>
+            <small>{{filter_end_date}}</small>
+           </div>
+         </div>
+         <div class="price-book">
+          <div class="price">₹ {{vc.hourly_rate_wo_driver}}/hr<small>(240 km included)</small></div>
+           <a href="{% url 'user_filter_book' city vc.id %}"><button>Book</button></a>
+         </div>
+      </div>
+      
+    {% endfor %}
+
+      </div>
+    </div>
+  </section><br><br><br>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const pickupDate = document.querySelector('input[name="pickup-date"]');
+    const dropoffDate = document.querySelector('input[name="dropoff-date"]');
+
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months start at 0!
+    const dd = String(today.getDate()).padStart(2, '0');
+
+    const minDate = `${yyyy}-${mm}-${dd}`;
+
+    pickupDate.setAttribute('min', minDate);
+    dropoffDate.setAttribute('min', minDate);
+
+    // Optional: Ensure dropoff date is not before pickup date
+    pickupDate.addEventListener('change', function () {
+      dropoffDate.setAttribute('min', this.value);
+      if (dropoffDate.value < this.value) {
+        dropoffDate.value = this.value;
+      }
+    });
+  });
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,65 @@
+<div class="wrapper">
+  <div class="sidebar" id="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li>Dashboard</li>
+      <li>Users</li>
+      <li>Products</li>
+      <li>Orders</li>
+      <li>Reports</li>
+      <li>Logout</li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="topbar">
+      <span class="menu-btn" id="menu-btn">&#9776;</span>
+      <h1>Dashboard</h1>
+      <div class="dropdown" id="dropdown">
+        <button class="dropdown-btn" id="dropdown-toggle">Admin ▼</button>
+        <div class="dropdown-content">
+          <a href="#">Profile</a>
+          <a href="#">Settings</a>
+          <a href="#">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add your dashboard content here -->
+    <div style="padding: 20px;">
+      <p>Welcome to the admin dashboard.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay for mobile -->
+<div id="overlay"></div>
+
+<!-- JS for toggle -->
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const dropdown = document.getElementById('dropdown');
+  const dropdownToggle = document.getElementById('dropdown-toggle');
+
+  menuBtn.addEventListener('click', function () {
+    sidebar.classList.toggle('show');
+    overlay.style.display = sidebar.classList.contains('show') ? 'block' : 'none';
+  });
+
+  overlay.addEventListener('click', function () {
+    sidebar.classList.remove('show');
+    overlay.style.display = 'none';
+  });
+
+  dropdownToggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    dropdown.classList.toggle('active');
+  });
+
+  // Close dropdown if clicking anywhere else
+  window.addEventListener('click', function () {
+    dropdown.classList.remove('active');
+  });
+</script>

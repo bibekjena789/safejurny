@@ -1,0 +1,98 @@
+.admin_add_container{
+   
+    margin-top: 10px;
+   
+ 
+    justify-content:center;
+    align-items: center;
+    align-self: center;
+    display: flex;
+    
+}
+.admin_add_form h2{
+    display: flex;
+   justify-content: center ;
+   align-items: center;
+    
+    margin-top: 30px;
+    font-size:40px;
+   
+}
+.admin_add_form{
+  
+   
+    background: linear-gradient(180deg,#ffc738,#adb3a1);
+   
+   
+  
+   width: 50%;
+    align-self: center;
+    align-items: center;
+    max-height: cover;
+    font-weight:600 ;
+    
+}
+.admin_add_allform{
+  
+  padding:20px;
+  font-size: 22px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.admin_add_allform_img img{
+
+    width:50px;
+    height: 50px;
+  
+   
+}
+#admin_add_allform_profile-Pic img{
+     width:50px;
+    height: 50px;
+   
+}
+.admin_add_allform label{
+    width:40%;
+
+}
+.div_allform input{
+    width:50%;
+    border-radius: 5px;
+    height:20px ;
+}
+
+
+.div_allform{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.admin_add_allform select{
+    width:200PX;
+  border-radius: 5px;
+
+}
+.admin_add_allform_submit {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-self: center;
+    justify-content: space-around;
+    
+   
+}
+
+@media(max-width:900px){
+    .div_allform{
+         display: flex;
+    flex-direction: column;
+    }
+}
+
+
+
+
+

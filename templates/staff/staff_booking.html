@@ -1,0 +1,61 @@
+{% extends "base_staff.html" %}
+{% block title %}Userss{% endblock %}
+{% block content %}
+
+
+ <div class="addBooking_container">
+    <h2>Add Booking Details</h2>
+    <form action="post">
+      <div class="addBooking_form-grid">
+        <label for="user">User:</label>
+        <select>
+            <option >Choose User</option>
+            <option>1</option>
+            
+            
+
+        </select>
+
+        <label>Vehicle:</label>
+        <select><option>Vehicle</option></select>
+
+        <label>Start Date:</label>
+        <input type="date">
+        <label>Start Time:</label>
+        <input type="time">
+
+        <label>End Date:</label>
+        <input type="date">
+        <label>End Time:</label>
+        <input type="time">
+
+        <label>Pickup Location:</label>
+        <select><option>------</option>
+        </select>
+
+        <label>DropOff Location:</label>
+        <select><option>------</option></select>
+
+        <label>Driver Choice:</label>
+        <select><option>Self Drive</option>
+        <option>With Drive</option>
+        </select>
+
+        <label>Total Price:</label>
+        <input type="number">
+
+        <label>Booking Status:</label>
+        <select><option>----------</option></select>
+      </div>
+
+      <div class="addBooking_full-row">
+        <button type="submit">Save</button>
+        <button type="submit">Save and add Another</button>
+        <button type="submit">Save and Continue editing</button>
+      </div>
+    </form>
+  </div>
+
+
+
+{% endblock %}

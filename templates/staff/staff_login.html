@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff||Login</title>
+    <link rel="stylesheet" href="{% static 'css/staff/staff_login.css' %}">
+    
+    <link rel="icon" href="" type="image/png">
+</head>
+<body class="admin_login_body">
+    <div class="admin_login_header">
+        <div class="admin_login_container">
+            <h1>Staff Login</h1>
+            <form method="POST" class="admin_login_form" action="/staff/staff_login/">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="staff_username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="staff_password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const localTime = new Date().toString();  // e.g. "Thu Jun 19 2025 14:47:53 GMT+0530 (India Standard Time)"
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "local_time";
+        input.value = localTime;
+        document.querySelector("form").appendChild(input);
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                alert("Location access granted ✅");
+                console.log("Latitude:", position.coords.latitude);
+                console.log("Longitude:", position.coords.longitude);
+            },
+            function (error) {
+                if (error.code === error.PERMISSION_DENIED) {
+                    alert("❌ Location access denied by the user.");
+                } else {
+                    alert("⚠️ Unable to get location: " + error.message);
+                }
+            }
+        );
+    } else {
+        alert("❌ Geolocation is not supported by your browser.");
+    }
+});
+</script>
+
+</body>
+</html>

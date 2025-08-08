@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Login</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static '/css/pages_css/favicon.ico' %}">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section {
+    height: 95%;
+    width: 100%;
+    display: flex;
+    background:url("{% static 'images/background_all/user_login_form.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    background-color: #ffffffff;
+}
+
+.login-section{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+}
+.login-box{
+    background: url("{% static 'images/background_all/user_login_form_back.jpg' %}") no-repeat center center fixed;
+    opacity: 0.8;
+    background-size: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 20px;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-box h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+.login-box input {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.login-box input[type="number"],
+.login-box input[type="password"] {
+    background-color: #ffffff;
+    color: #000000;
+}
+.login-box button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+footer{
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+@media (max-width: 600px) {
+    .login-box{
+        width: 320px;
+        height: 400px;
+    }
+    /* Removed empty ruleset for .login-box */
+    .login-box h1 {
+        font-size: 20px;
+    }
+    .login-box input, .login-box button {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+<body>
+    <section class="login-section">
+      <div class="login-box">
+        <h1>User Login</h1>
+        {% if messages %}
+          <div id="login-message">
+            {% for message in messages %}
+              <b style="color: {% if message.tags == 'success' %}green{% else %}red{% endif %};">{{ message }}</b>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <form method="post" action="{% url 'user_login' %}">
+            {% csrf_token %}
+            <div>
+                <label for="phone">Phone number:</label>
+                <input type="text" id="phone" name="user_phone" placeholder="Enter your phone number without +91" maxlength="13" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="user_password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login</button>
+            <a href="/user/user_signup"><button type="button">Signup</button></a>
+            <a href="/user/reset_pass" style="text-decoration: none;"> <p style="width: 100%;  color: #ffffff; font-size: 0.9rem; text-align: end;">Forget Password</p></a>
+        </form>
+    </div>
+    </section>
+
+    <script>
+
+   document.querySelector('form').addEventListener('submit', function(e) {
+    // Remove previous errors
+    document.querySelectorAll('.error-msg').forEach(el => el.remove());
+
+    let valid = true;
+
+    // Phone validation
+    const phoneInput = document.getElementById('phone');
+    const phoneValue = phoneInput.value.trim();
+    if (!phoneValue) {
+        showError(phoneInput, 'Phone number is required.');
+        valid = false;
+    } else if (!/^[0-9]{10}$/.test(phoneValue)) {
+        showError(phoneInput, 'Phone number must be exactly 10 digits.');
+        valid = false;
+    }
+
+    // Password validation
+    const passInput = document.getElementById('password');
+    const passValue = passInput.value;
+    if (!passValue) {
+        showError(passInput, 'Password is required.');
+        valid = false;
+    } else if (
+        passValue.length < 8 ||
+        !/^[A-Z]/.test(passValue) ||
+        !/[!@#$%^&*(),.?\":{}|<>]/.test(passValue)
+    ) {
+        showError(passInput, 'Password must be at least 8 characters, start with a capital letter, and contain a special character.');
+        valid = false;
+    }
+
+    if (!valid) e.preventDefault();
+
+    function showError(input, message) {
+        const error = document.createElement('b');
+        error.className = 'error-msg'; 
+        error.style.color = 'red';
+        error.style.fontSize = '14px';
+        error.style.marginTop = '2px';
+        input.parentNode.appendChild(error);
+        error.textContent = message;
+    }
+ });
+</script>
+
+    <footer>
+        <p>&copy; 2025 PixiZip Solutions. All rights reserved.</p>
+    </footer>
+</body>
+</html>

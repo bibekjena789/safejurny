@@ -1,0 +1,211 @@
+/* .admin_login_body{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(43, 50, 56);
+}
+.admin_login_container{
+    width: 400px;
+    height: fit-content;
+    background-color: #a2d2ee;
+    border: solid 1px #000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 10px;
+}
+.admin_login_form{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.admin_login_form input{
+    width: 90%;
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    border: solid 1px #000;
+    padding-left: 10px;
+}
+.form-img-group{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 3px;
+}
+.captcha_input{
+    width: 90%;
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    border: solid 1px #000;
+    padding-left: 10px;
+}
+#reload_admin_login{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.img_captcha_field_full{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.text_captcha_admin{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+@media  (max-width: 600px) {
+        .admin_login_container{
+            width: 90%;
+            height: fit-content;
+        }
+        .admin_login_form input, .captcha_input{
+            width: 90%;
+        }
+        #reload_admin_login{
+            width: 25px;
+            height: 25px;
+        }
+    }
+     */
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fc;
+      color: #333;
+    }
+
+    .wrappe { 
+      max-height: 75vh;
+      width: 100%;
+      display: flex;
+      min-height: 80vh; 
+      flex-direction: column;
+    }
+    
+    .cards {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      gap: 35px;padding: 25px;
+    }
+
+    .card {
+      display: grid;
+      text-align: center;
+      justify-content: center;
+      height: 120px;
+      width: 250px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+   
+    @media (max-width: 768px) {
+      .wrappe {
+        width: fit-content;
+      }
+    }
+
+
+    /* user-section */
+
+    .user-table {
+      min-height: 400px;
+      max-height: 400px;
+      overflow-y: scroll;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 10px;
+      border: 10x solid black;
+}
+
+.user-table-container,
+.user-table-container1,
+.user-table-container2,
+.user-table-container3 {
+  flex: 1 1 calc(50% - 20px); /* 2 columns with spacing */
+  min-height: 400px;
+  max-height: 400px;
+  overflow-y: scroll;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* Ensures the table fills its container correctly */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+/* Table header style */
+thead {
+  background-color: #2e3b4e;
+  color: #fff;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Row hover effect */
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Tablet responsive */
+@media (max-width: 768px) {
+  .user-table-container,
+  .user-table-container1,
+  .user-table-container2,
+  .user-table-container3 {
+    flex: 1 1 100%;
+  }
+
+  th, td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  th, td {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

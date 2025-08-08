@@ -1,0 +1,130 @@
+{% extends "base_staff.html" %}
+{% block title %}Vehicle Details{% endblock %}
+{% block content %}
+
+<div class="vehicle_regs_form-container">
+    <h2>Vehicle Information </h2>
+    <form action="{% url 'staff_vehicle_edit' filtered_vehicle.id %}" method="POST" >
+      {% csrf_token %}
+
+      <div class="vehicle_regs_form-group">
+        <label for="make">Make</label>
+        <input type="text" id="vehicle_regs_make" placeholder='{{filtered_vehicle.make}}' name="make" readonly >
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="model">Model</label>
+        <input type="text" id="vehicle_regs_model" placeholder='{{filtered_vehicle.model}}' name="model"  readonly>
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="year">Year</label>
+        <input type="number" id="vehicle_regs_year" name="year" placeholder='{{filtered_vehicle.year}}' min="1900" max="2099"  >
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="plate">License Plate</label>
+        <input type="text" id="vehicle_regs_plate" placeholder='{{filtered_vehicle.license_plate}}' name="plate"   >
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="image">Vehicle Image</label>
+        
+         <input type="file" name="Choose File" accept=".jpg,.jpeg,.png,.gif" id="vehicle_regs_input-file"
+         style="border: none;">
+        <img src="{{filtered_vehicle.vehicle_image.url}}"  id="vehicle_regs_profile-Pic">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="location">Location</label>
+        <input type="text" placeholder='{{filtered_vehicle.location}}' id="vehicle_regs_location"   name="location" readonly>
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="hourly_wo_driver">Hourly Rate (No Driver)</label>
+        <input type="number" id="vehicle_regs_hourly_wo_driver" placeholder='{{filtered_vehicle.hourly_rate_wo_driver}}' name="hourly_wo_driver" step="0.01">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="hourly_with_driver">Hourly Rate (With Driver)</label>
+        <input type="number" id="vehicle_regs_hourly_with_driver" placeholder='{{filtered_vehicle.hourly_rate_with_driver}}' name="hourly_with_driver" step="0.01">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="daily_wo_driver">Daily Rate (No Driver)</label>
+        <input type="number" id="vehicle_regs_daily_wo_driver" placeholder='{{filtered_vehicle.daily_rate_wo_driver}}' name="daily_wo_driver" step="0.01">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="daily_with_driver">Daily Rate (With Driver)</label>
+        <input type="number" id="vehicle_regs_daily_with_driver" placeholder='{{filtered_vehicle.daily_rate_with_driver}}' name="daily_with_driver" step="0.01">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="weekly_wo_driver">Weekly Rate (No Driver)</label>
+        <input type="number" id="vehicle_regs_weekly_wo_driver" placeholder='{{filtered_vehicle.weekly_rate_wo_driver}}' name="weekly_wo_driver" step="0.01">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="weekly_with_driver">Weekly Rate (With Driver)</label>
+        <input type="number" id="vehicle_regs_weekly_with_driver" placeholder='{{filtered_vehicle.weekly_rate_with_driver}}' name="weekly_with_driver" step="0.01">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="fifteen_day_wo_driver">Fifteen Day Rate (No Driver)</label>
+        <input type="number" id="vehicle_regs_fifteen_day_wo_driver" placeholder='{{filtered_vehicle.fif_day_rate_wo_driver}}' name="fifteen_day_wo_driver" step="0.01">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="fifteen_day_with_driver">Fifteen Day Rate (With Driver)</label>
+        <input type="number" id="vehicle_regs_fifteen_day_with_driver" placeholder='{{filtered_vehicle.fif_day_rate_with_driver}}' name="fifteen_day_with_driver" step="0.01">
+      </div>
+
+       <div class="vehicle_regs_form-group">
+        <label for="monthly_wo_driver">Monthly Rate (No Driver)</label>
+        <input type="number" id="vehicle_regs_monthly_wo_driver" placeholder='{{filtered_vehicle.monthly_rate_wo_driver}}' name="monthly_wo_driver" step="0.01">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="monthly_with_driver">Monthly Rate (With Driver)</label>
+        <input type="number" id="vehicle_regs_monthly_with_driver" placeholder='{{filtered_vehicle.monthly_rate_with_driver}}' name="monthly_with_driver" step="0.01">
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="status">Status</label>
+        <select id="vehicle_regs_status" name="status">
+          <option value="">Select</option>
+          <option value="available" {% if filtered_vehicle.status == "Available"|lower %}selected{% endif %}>Available</option>
+          <option value="rented" {% if filtered_vehicle.status == "Rented"|lower %}selected{% endif %}>Rented</option>
+          <option value="maintenance" {% if filtered_vehicle.status == "Maintenance"|lower %}selected{% endif %}>Maintenance</option>
+          <option value="unavailable" {% if filtered_vehicle.status == "Unavailable"|lower %}selected{% endif %}>Unavailable</option>
+        </select>
+
+      </div>
+
+      <div class="vehicle_regs_form-group">
+        <label for="allot_city">Allot City</label>
+        <input type="text" value="{{filtered_vehicle.allot_city}}" id="vehicle_regs_allot_city" name="allot_city" readonly>
+      </div>
+
+      <div style="text-align: center;">
+        <button type="submit">Submit Vehicle</button>
+      </div>
+
+    </form>
+  </div>
+
+    
+                   
+
+    <script>
+        let profilePic = document.getElementById("vehicle_regs_profile-Pic");
+        let inputfile = document.getElementById("vehicle_regs_input-file");
+
+        inputfile.onchange = function () {
+            profilePic.src = URL.createObjectURL(inputfile.files[0])
+        };
+
+    </script>
+
+{% endblock%}

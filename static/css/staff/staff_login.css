@@ -1,0 +1,94 @@
+.admin_login_body{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(43, 50, 56);
+}
+.admin_login_container{
+    width: 400px;
+    height: fit-content;
+    background-color: #a2d2ee;
+    border: solid 1px #000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 10px;
+}
+.admin_login_form{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.admin_login_form input{
+    width: 90%;
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    border: solid 1px #000;
+    padding-left: 10px;
+}
+.form-img-group{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 3px;
+}
+.captcha_input{
+    width: 90%;
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    border: solid 1px #000;
+    padding-left: 10px;
+}
+#reload_admin_login{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.img_captcha_field_full{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.text_captcha_admin{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+@media  (max-width: 600px) {
+        .admin_login_container{
+            width: 90%;
+            height: fit-content;
+        }
+        .admin_login_form input, .captcha_input{
+            width: 90%;
+        }
+        #reload_admin_login{
+            width: 25px;
+            height: 25px;
+        }
+    }
+    
